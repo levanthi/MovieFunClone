@@ -1,0 +1,31 @@
+button {
+   border: none;
+   color: white;
+   border-radius: 3px;
+   cursor: pointer;
+   &:hover {
+      filter: brightness(0.96);
+   }
+}
+a {
+   color: white;
+   text-decoration: none;
+   &:hover {
+      color: #428bca;
+      background-color: #102c48;
+   }
+}
+.medium {
+   padding: 7px 16px;
+   height: 40px;
+   min-width: 120px;
+   font-size: 1.6rem;
+}
+.large {
+}
+.small {
+}
+
+.primary {
+   background-color: var(--primaryColor);
+}
