@@ -1,0 +1,34 @@
+.header {
+   height: 56px;
+   display: flex;
+}
+.brand {
+   &:hover {
+      background: unset;
+   }
+   img {
+      width: 112px;
+      height: 28px;
+   }
+}
+.menu {
+   display: flex;
+   flex: 1;
+   justify-content: space-between;
+   align-items: center;
+}
+.start {
+   height: 100%;
+   display: flex;
+}
+.item {
+   padding: 8px 12px;
+   height: 100%;
+   display: block;
+   display: flex;
+   align-items: center;
+}
+.icon {
+   margin-right: 4px;
+   margin-bottom: 2px;
+}

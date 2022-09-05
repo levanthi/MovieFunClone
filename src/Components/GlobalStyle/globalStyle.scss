@@ -1,10 +1,17 @@
 @import 'normalize.css';
+@font-face {
+   font-family: 'BlinkMacSystemFont';
+   src: url('../../assets/fonts/f2.woff2');
+   font-weight: 400;
+}
 :root {
+   --background: #06121e;
+   --color: white;
+   --primaryColor: rgb(207, 33, 34);
 }
 
 html {
    font-size: 62.5%;
-   font-family: sans-serif;
 }
 
 * {
@@ -15,4 +22,9 @@ html {
 
 body {
    font-size: 1.6rem;
+   font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial,
+      sans-serif;
+   background-color: var(--background);
+   color: var(--color);
 }

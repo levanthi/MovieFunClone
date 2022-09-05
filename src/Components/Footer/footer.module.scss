@@ -1,0 +1,40 @@
+.footer {
+   padding: 5rem 1.5rem 12rem;
+   background-image: url('../../assets/images/footer-bg.jpg');
+   .title {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+   }
+   ul {
+      color: #b5b5b5;
+      list-style-type: circle;
+      font-size: 1.6rem;
+      margin: 32px;
+   }
+   .contact {
+      display: flex;
+      justify-content: flex-end;
+      svg {
+         width: 24px;
+         height: 24px;
+         path {
+            fill: white;
+         }
+      }
+      a {
+         padding: 11px;
+         display: flex;
+         width: fit-content;
+         background-color: #071334;
+         border-radius: 50%;
+         border: 1px solid white;
+      }
+      a + a {
+         margin-left: 20px;
+      }
+   }
+}
+.container {
+   margin: auto;
+   width: fit-content;
+}
