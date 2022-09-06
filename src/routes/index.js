@@ -1,6 +1,5 @@
 import { Navigate } from 'react-router-dom';
 import { Home, Search, Login, Profile } from '../Pages';
-import { DefaultLayout } from '../Layouts';
 const isLogin = true;
 
 const PrivateRoutes = ({ children }) => {

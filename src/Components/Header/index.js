@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import styles from './header.module.scss';

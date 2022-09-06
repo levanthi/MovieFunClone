@@ -50,11 +50,16 @@ function Footer() {
                </Link>
                <a
                   target={'_blank'}
+                  rel="noreferrer"
                   href="https://www.facebook.com/Xemphim.Original"
                >
                   <Facebook />
                </a>
-               <a href="https://t.me/xemphim_official" target={'_blank'}>
+               <a
+                  href="https://t.me/xemphim_official"
+                  target={'_blank'}
+                  rel="noreferrer"
+               >
                   <Send />
                </a>
             </div>
