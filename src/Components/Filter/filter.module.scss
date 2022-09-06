@@ -1,0 +1,27 @@
+.filter {
+   padding: 0 10px;
+   background-color: rgba(14, 39, 64, 0.45);
+   border-radius: 3px;
+   display: flex;
+}
+.filter-item {
+   padding: 12px;
+   flex: 1;
+}
+.title {
+   margin-bottom: 8px;
+}
+.select-wrap {
+}
+.select {
+   font-size: 1.6rem;
+   padding: 10px 3rem 9px 7px;
+   border-radius: 4px;
+   color: #363636;
+   outline: none;
+   cursor: pointer;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   position: relative;
+   width: 100%;
+}
