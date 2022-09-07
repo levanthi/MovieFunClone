@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { Home, Search, Login, Profile } from '../Pages';
+import { Home, Search, Login, Profile, TopFilm } from '../Pages';
 const isLogin = true;
 
 const PrivateRoutes = ({ children }) => {
@@ -18,6 +18,10 @@ const publicRoutes = [
    {
       path: '/search',
       component: Search,
+   },
+   {
+      path: '/top',
+      component: TopFilm,
    },
    {
       path: '/login',

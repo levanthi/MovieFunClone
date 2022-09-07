@@ -11,6 +11,7 @@ function Button({
    large,
    small,
    primary,
+   layout,
    children,
    ...rest
 }) {
@@ -30,6 +31,7 @@ function Button({
             small,
             large,
             primary,
+            layout,
          })}
          {...props}
          {...rest}

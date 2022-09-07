@@ -29,3 +29,14 @@ a {
 .primary {
    background-color: var(--primaryColor);
 }
+
+.layout {
+   background-color: transparent;
+   font-size: 1.4rem;
+   color: rgba(255, 255, 255, 0.7);
+   text-transform: uppercase;
+   font-weight: 600;
+   font-family: sans-serif;
+   height: 48px;
+   width: 160px;
+}
