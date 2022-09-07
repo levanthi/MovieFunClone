@@ -4,48 +4,9 @@ import MovieItem from '../MovieItem';
 
 const cx = classNames.bind(styles);
 
-const movieList = [
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-];
-
-function MovieList() {
+function MovieList({ movieList = [] }) {
    return (
-      <div className={cx('movie-list') + ' row container'}>
+      <div className={cx('movie-list') + ' row'}>
          {movieList.map((movie, index) => {
             return <MovieItem key={index} data={movie} />;
          })}

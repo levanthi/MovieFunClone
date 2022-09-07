@@ -261,7 +261,7 @@ function Filter() {
    };
 
    return (
-      <div className={cx('filter') + ' container'}>
+      <div className={cx('filter')}>
          {filterList.map((filter, index) => {
             return (
                <div key={index} className={cx('filter-item')}>
