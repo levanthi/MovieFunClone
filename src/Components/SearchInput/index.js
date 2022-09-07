@@ -27,6 +27,7 @@ function SearchInput() {
                <a
                   href={`https://www.google.com/search?q=${search}%20site%3Axemphim.fun`}
                   target={'_blank'}
+                  rel="noreferrer"
                >
                   tìm với Google
                </a>
