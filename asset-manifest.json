@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/MovieFunClone-Frontend/static/css/main.a82a286a.css",
+    "main.js": "/MovieFunClone-Frontend/static/js/main.eaaaa104.js",
+    "static/js/787.cda612ba.chunk.js": "/MovieFunClone-Frontend/static/js/787.cda612ba.chunk.js",
+    "static/media/footer-bg.jpg": "/MovieFunClone-Frontend/static/media/footer-bg.7b1562b2b943d2f5056c.jpg",
+    "static/media/f2.woff2": "/MovieFunClone-Frontend/static/media/f2.9165081d10e1ba601384.woff2",
+    "static/media/Oswald.woff2": "/MovieFunClone-Frontend/static/media/Oswald.37ffdd2667b8a0045f0d.woff2",
+    "index.html": "/MovieFunClone-Frontend/index.html",
+    "static/media/inbox.svg": "/MovieFunClone-Frontend/static/media/inbox.230cc701048d8abb24c835af6350c6cd.svg",
+    "static/media/send.svg": "/MovieFunClone-Frontend/static/media/send.afde3bb66ecfe67cc329006c8e064bab.svg",
+    "static/media/facebook.svg": "/MovieFunClone-Frontend/static/media/facebook.996e2eaf03cc38efc98a9fb91eafece3.svg",
+    "main.a82a286a.css.map": "/MovieFunClone-Frontend/static/css/main.a82a286a.css.map",
+    "main.eaaaa104.js.map": "/MovieFunClone-Frontend/static/js/main.eaaaa104.js.map",
+    "787.cda612ba.chunk.js.map": "/MovieFunClone-Frontend/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a82a286a.css",
+    "static/js/main.eaaaa104.js"
+  ]
+}
