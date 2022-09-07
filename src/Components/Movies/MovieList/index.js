@@ -4,7 +4,40 @@ import MovieItem from '../MovieItem';
 
 const cx = classNames.bind(styles);
 
-function MovieList({ movieList = [] }) {
+const testData = [
+   {
+      thumbnail:
+         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
+      name: 'Gia Tộc Rồng',
+      rawName: 'House of the Dragon',
+   },
+   {
+      thumbnail:
+         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
+      name: 'Gia Tộc Rồng',
+      rawName: 'House of the Dragon',
+   },
+   {
+      thumbnail:
+         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
+      name: 'Gia Tộc Rồng',
+      rawName: 'House of the Dragon',
+   },
+   {
+      thumbnail:
+         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
+      name: 'Gia Tộc Rồng',
+      rawName: 'House of the Dragon',
+   },
+   {
+      thumbnail:
+         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
+      name: 'Gia Tộc Rồng',
+      rawName: 'House of the Dragon',
+   },
+];
+
+function MovieList({ movieList = testData || [] }) {
    return (
       <div className={cx('movie-list') + ' row'}>
          {movieList.map((movie, index) => {
