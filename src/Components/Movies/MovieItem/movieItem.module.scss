@@ -1,0 +1,21 @@
+.movie-item {
+   padding: 12px 8px !important;
+   a {
+      width: fit-content;
+      display: block;
+      &:hover {
+         cursor: pointer;
+         background-color: unset;
+      }
+      img {
+         width: 100%;
+      }
+   }
+   .name {
+      color: #dbdbdb;
+      margin: 4px 0 5px;
+   }
+   .raw-name {
+      color: #7a7a7a;
+   }
+}

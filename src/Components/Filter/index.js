@@ -254,7 +254,7 @@ function Filter() {
       sort: 'publishDate',
    });
    const handleFilter = (e) => {
-      const newFilterObj = { ...filterObj, [e.target.name]: e.target.value };
+      // const newFilterObj = { ...filterObj, [e.target.name]: e.target.value };
       //call API and handle data at here
 
       setFilterObj((pre) => ({ ...pre, [e.target.name]: e.target.value }));

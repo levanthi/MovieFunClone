@@ -33,3 +33,63 @@ body {
    max-width: 1344px;
    margin: auto;
 }
+
+.row {
+   display: flex;
+   flex-wrap: wrap;
+}
+.col {
+   padding: 0 6px;
+   background-clip: content-box;
+}
+.l-12 {
+   width: 100%;
+}
+.l-6 {
+   width: 50%;
+}
+.l-4 {
+   width: 33.33%;
+}
+.l-3 {
+   width: 25%;
+}
+.l-2-4 {
+   width: 20%;
+}
+
+@media (min-width: 750px) and (max-width: 1199px) {
+   .m-12 {
+      width: 100%;
+   }
+   .m-6 {
+      width: 50%;
+   }
+   .m-4 {
+      width: 33.33%;
+   }
+   .m-3 {
+      width: 25%;
+   }
+   .m-2-4 {
+      width: 20%;
+   }
+}
+
+@media (max-width: 749px) {
+   .c-12 {
+      width: 100%;
+   }
+   .c-6 {
+      width: 50%;
+   }
+   .c-4 {
+      width: 33.33%;
+   }
+   .c-3 {
+      width: 25%;
+   }
+   .c-2-4 {
+      width: 20%;
+   }
+}
