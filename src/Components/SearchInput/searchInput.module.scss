@@ -1,0 +1,25 @@
+.search-input {
+   margin-bottom: 2.4rem;
+   input {
+      width: 100%;
+      font-size: 2rem;
+      padding: 9px 14px;
+      outline: none;
+      border-radius: 5px;
+      border: unset;
+      line-height: 3.2rem;
+      font-weight: lighter;
+   }
+   .search-by-google {
+      margin-top: 2.8rem;
+      margin-bottom: 2.4rem;
+      a {
+         text-decoration: underline;
+         color: #428bca;
+         &:hover {
+            color: rgb(220, 248, 54);
+            background-color: unset;
+         }
+      }
+   }
+}
