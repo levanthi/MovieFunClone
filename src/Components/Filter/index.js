@@ -267,13 +267,13 @@ function Filter() {
                <div key={index} className={cx('filter-item')}>
                   <h4 className={cx('title')}>{filter.title}:</h4>
                   <div className={cx('select-wrap')}>
+                     <span className={cx('arrow-down')}></span>
                      <select
                         name={filter.name}
                         onChange={handleFilter}
                         className={cx('select')}
                      >
                         {filter.default || <option>- Tất cả -</option>}
-
                         {filter.data.map((option, index) => {
                            return (
                               <option key={index} value={filter.value[index]}>

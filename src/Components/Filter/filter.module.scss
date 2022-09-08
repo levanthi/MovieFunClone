@@ -12,6 +12,7 @@
    margin-bottom: 8px;
 }
 .select-wrap {
+   position: relative;
 }
 .select {
    font-size: 1.6rem;
@@ -24,4 +25,17 @@
    -moz-appearance: none;
    position: relative;
    width: 100%;
+}
+.arrow-down {
+   position: absolute;
+   top: 50%;
+   right: 10px;
+   z-index: 10;
+   padding: 3px;
+   display: block;
+   border: 3px solid #428bca;
+   border-radius: 4px;
+   transform: rotate(45deg) translateX(-100%);
+   border-top-color: transparent;
+   border-left-color: transparent;
 }
