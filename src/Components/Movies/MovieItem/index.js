@@ -1,11 +1,51 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './movieItem.module.scss';
+import Button from '../../Button';
+import { images } from '../../../assets/images';
 
 const cx = classNames.bind(styles);
 
-function MovieItem({ data }) {
-   return (
+function MovieItem({ data, list }) {
+   return list ? (
+      <div className={cx('movie-item', 'view-list')}>
+         <Link to={''}>
+            <img alt="thumbnail" src={data.thumbnail} />
+         </Link>
+         <div className={cx('content')}>
+            <div className={cx('group')}>
+               <Link to="" className={cx('name')}>
+                  {data.name}
+               </Link>
+               <span className={cx('duration')}>{data.duration}</span>
+            </div>
+            <div className={cx('group')}>
+               <Link to={''} className={cx('raw-name')}>
+                  {data.rawName}
+               </Link>
+               <Link to="" className={cx('country')}>
+                  {data.country}
+               </Link>
+            </div>
+            <p>{data.description}</p>
+            <div className={cx('group')}>
+               <div className={cx('genres')}>
+                  {data.genres.map((genre) => {
+                     return (
+                        <Button key={genre} to={'/ss'} genreListView>
+                           {genre}
+                        </Button>
+                     );
+                  })}
+               </div>
+               <div className={cx('rating-wrap')}>
+                  <img src={images.IMDB} />
+                  <span className={cx('rating')}>{data.rating}</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   ) : (
       <div className={cx('movie-item') + ' col l-2-4'}>
          <Link to="">
             <img alt="thumbnail" src={data.thumbnail} />
