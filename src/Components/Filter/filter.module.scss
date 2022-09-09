@@ -39,3 +39,29 @@
    border-top-color: transparent;
    border-left-color: transparent;
 }
+.view-toggle {
+   user-select: none;
+   display: flex;
+   flex-direction: column;
+   padding: 12px;
+   div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   img,
+   svg {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+   }
+   img {
+      filter: invert(49%) sepia(0%) saturate(0%) hue-rotate(121deg)
+         brightness(97%) contrast(99%);
+   }
+   svg {
+      path {
+         fill: white;
+      }
+   }
+}

@@ -40,3 +40,20 @@ a {
    height: 48px;
    width: 160px;
 }
+
+.genre-list-view {
+   color: #dbdbdb;
+   background-color: #363636;
+   padding: 4px 8px;
+   border-radius: 4px;
+   font-size: 1.3rem;
+   &:hover {
+      background-color: #363636 !important;
+      color: #dbdbdb;
+      text-decoration: underline;
+   }
+}
+.genre-list-view + .genre-list-view {
+   margin-left: 8px;
+   height: fit-content;
+}

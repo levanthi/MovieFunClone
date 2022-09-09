@@ -13,6 +13,7 @@ function Button({
    primary,
    layout,
    children,
+   genreListView,
    ...rest
 }) {
    let Comp = 'button';
@@ -32,6 +33,7 @@ function Button({
             large,
             primary,
             layout,
+            'genre-list-view': genreListView,
          })}
          {...props}
          {...rest}

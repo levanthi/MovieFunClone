@@ -48,6 +48,21 @@ body {
    animation-delay: 0.001s;
 }
 
+.view-list {
+   svg {
+      path {
+         fill: #7a7a7a;
+      }
+   }
+   img {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(223deg)
+         brightness(105%) contrast(103%);
+   }
+}
+select {
+   user-select: none;
+}
+
 @keyframes envade {
    from {
    }

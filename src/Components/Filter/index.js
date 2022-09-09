@@ -1,6 +1,9 @@
 import classnames from 'classnames/bind';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import styles from './filter.module.scss';
+import { images } from '../../assets/images';
 
 const cx = classnames.bind(styles);
 
@@ -244,7 +247,8 @@ const filterList = [
    },
 ];
 
-function Filter() {
+function Filter({ view, setViewList }) {
+   const viewRef = useRef();
    const [filterObj, setFilterObj] = useState({
       type: '',
       genre: '',
@@ -258,6 +262,14 @@ function Filter() {
       //call API and handle data at here
 
       setFilterObj((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+   };
+   const viewChange = () => {
+      if (viewRef.current.classList.contains('view-list')) {
+         viewRef.current.classList.remove('view-list');
+      } else {
+         viewRef.current.classList.add('view-list');
+      }
+      setViewList((pre) => !pre);
    };
 
    return (
@@ -286,6 +298,15 @@ function Filter() {
                </div>
             );
          })}
+         {view && (
+            <div className={cx('view-toggle')}>
+               <h4 className={cx('title')}>Hiển thị:</h4>
+               <div ref={viewRef} className="view-list">
+                  <FontAwesomeIcon onClick={viewChange} icon={faListUl} />
+                  <img onClick={viewChange} src={images.grid} alt="grid" />
+               </div>
+            </div>
+         )}
       </div>
    );
 }

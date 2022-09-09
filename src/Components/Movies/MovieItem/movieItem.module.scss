@@ -1,5 +1,6 @@
 .movie-item {
    padding: 10px 8px !important;
+   user-select: none;
    a {
       width: fit-content;
       display: block;
@@ -18,4 +19,72 @@
    .raw-name {
       color: #7a7a7a;
    }
+}
+
+.view-list {
+   width: 100%;
+   display: flex;
+   margin: 16px 16px 0 !important;
+   padding: 0 !important;
+   img {
+      width: 150px !important;
+      height: 225px;
+   }
+   .content {
+      padding-left: 3.2rem;
+      .group {
+         display: flex;
+         justify-content: space-between;
+         .name {
+            font-weight: 700;
+            color: #dbdbdb;
+            &:hover {
+               text-decoration: underline;
+            }
+         }
+         .duration {
+            color: #b5b5b5;
+         }
+         .raw-name,
+         .country {
+            &:hover {
+               text-decoration: underline;
+            }
+         }
+         .country {
+            color: #dbdbdb;
+         }
+         .genres {
+            display: flex;
+            align-self: center;
+         }
+         .rating-wrap {
+            display: flex;
+            align-items: center;
+            img {
+               width: 80px !important;
+               height: 40px;
+            }
+            .rating {
+               margin-left: 8px;
+               color: #b5b5b5;
+               font-weight: 700;
+            }
+         }
+      }
+      p {
+         margin: 30px 0 20px;
+         color: #b5b5b5;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         display: -webkit-box;
+         -webkit-box-orient: vertical;
+         -webkit-line-clamp: 2;
+         line-height: 3rem;
+      }
+   }
+}
+.view-list + .view-list {
+   border-top: 1px solid hsla(0, 0%, 85.9%, 0.5);
+   padding-top: 18px !important;
 }
