@@ -57,3 +57,34 @@ a {
    margin-left: 8px;
    height: fit-content;
 }
+
+.pagination {
+   height: 40px;
+   min-width: 40px;
+   background-color: transparent;
+   border: 1px solid rgb(219, 219, 219);
+   transition: all 0.1s;
+   margin: 4px;
+   padding: 7px 8px;
+   font-size: 1.6rem;
+   color: #dbdbdb;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 3px;
+   &:hover {
+      border-color: #b5b5b5;
+      color: #dcf836;
+      filter: unset;
+   }
+}
+.paginationActive {
+   background-color: #428bca;
+   border-color: #428bca;
+   color: #fff;
+   &:hover {
+      background-color: #428bca;
+      border-color: #428bca;
+      color: #fff;
+   }
+}
