@@ -14,6 +14,8 @@ function Button({
    layout,
    children,
    genreListView,
+   pagination,
+   paginationActive,
    ...rest
 }) {
    let Comp = 'button';
@@ -34,6 +36,8 @@ function Button({
             primary,
             layout,
             'genre-list-view': genreListView,
+            pagination: pagination,
+            paginationActive: paginationActive,
          })}
          {...props}
          {...rest}
