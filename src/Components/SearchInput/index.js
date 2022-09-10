@@ -19,6 +19,7 @@ function SearchInput() {
             ref={searchRef}
             spellCheck={false}
             value={search}
+            placeholder="Nhập tên phim..."
             onChange={handleSearchChange}
          />
          {search && (

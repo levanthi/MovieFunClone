@@ -34,8 +34,8 @@ function Pagination({ page, currentPage = 1, setCurrentPage }) {
       } else {
          end = start + 4;
       }
-      for (var i = start; i <= end; i++) {
-         result.push(i);
+      for (var j = start; j <= end; j++) {
+         result.push(j);
       }
       return result;
    })();
@@ -47,7 +47,7 @@ function Pagination({ page, currentPage = 1, setCurrentPage }) {
       } else if (data === -1 && currentPage > 1) {
          window.scrollTo({ top: 0, behavior: 'smooth' });
          setCurrentPage((pre) => pre - 1);
-      } else if (data != currentPage && data > 0 && data <= last) {
+      } else if (data !== currentPage && data > 0 && data <= last) {
          window.scrollTo({ top: 0, behavior: 'smooth' });
          setCurrentPage(data);
       }

@@ -39,7 +39,7 @@ function MovieItem({ data, list }) {
                   })}
                </div>
                <div className={cx('rating-wrap')}>
-                  <img src={images.IMDB} />
+                  <img src={images.IMDB} alt="imdb" />
                   <span className={cx('rating')}>{data.rating}</span>
                </div>
             </div>

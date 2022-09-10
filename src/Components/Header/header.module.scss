@@ -1,6 +1,15 @@
 .header {
    height: 56px;
    display: flex;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 9999;
+   transition: all 0.5s;
+}
+.background {
+   background-color: rgba(51, 10, 103, 0.93);
 }
 .brand {
    &:hover {

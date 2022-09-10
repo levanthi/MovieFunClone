@@ -1,7 +1,9 @@
+import { useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 import styles from './header.module.scss';
 import Button from '../Button';
 import { images } from '../../assets/images';
@@ -18,8 +20,22 @@ const linkList = [
 ];
 
 function Header() {
+   const headerRef = useRef();
+   useEffect(() => {
+      window.addEventListener('scroll', () => {
+         if (window.scrollY >= 100) {
+            headerRef.current.classList.add(cx('background'));
+         } else {
+            headerRef.current.classList.remove(cx('background'));
+         }
+      });
+      return () => {
+         headerRef.current.classList.remove(cx('background'));
+      };
+   }, []);
+   console.log('render');
    return (
-      <div className={cx('header')}>
+      <div ref={headerRef} className={cx('header')}>
          <Link to={'/'} className={cx('brand', 'item')}>
             <img src={images.logo} alt="logo" />
          </Link>
