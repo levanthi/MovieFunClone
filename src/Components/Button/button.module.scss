@@ -2,6 +2,7 @@ button {
    border: none;
    color: white;
    border-radius: 3px;
+   font-weight: 500;
    cursor: pointer;
    &:hover {
       filter: brightness(0.96);
@@ -22,10 +23,19 @@ a {
    font-size: 1.6rem;
 }
 .large {
+   width: 100%;
+   height: 60px;
+   box-sizing: border-box;
+   padding: 11px 24px;
+   font-size: 2.4rem;
+   border-radius: 5px;
 }
 .small {
 }
 
+.classic {
+   background-color: #3488ce;
+}
 .primary {
    background-color: var(--primaryColor);
 }
