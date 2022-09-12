@@ -39,12 +39,15 @@
       .tick {
          display: flex;
          width: fit-content;
-         cursor: pointer;
          &:hover {
+            cursor: pointer;
             color: #ffe08a;
          }
          span {
             margin-left: 6px;
+         }
+         input {
+            cursor: pointer;
          }
       }
       .field {
@@ -59,6 +62,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+         }
+         .tick-desc {
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 8px;
          }
       }
       .or {

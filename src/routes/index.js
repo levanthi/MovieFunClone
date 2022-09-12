@@ -3,6 +3,7 @@ import {
    Home,
    Search,
    Login,
+   Signup,
    Profile,
    TopFilm,
    FilterPage,
@@ -34,6 +35,10 @@ const publicRoutes = [
    {
       path: '/login',
       component: Login,
+   },
+   {
+      path: '/signup',
+      component: Signup,
    },
    {
       path: '/faq',

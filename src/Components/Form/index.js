@@ -11,9 +11,10 @@ function Form({ data }) {
       <div className={cx('form')}>
          <h1 className={cx('title')}>{data.title}</h1>
          <form>
+            {/* this is input fields */}
             {data.fields.map((field) => {
                return (
-                  <div className={cx('field')}>
+                  <div key={field.placeholder} className={cx('field')}>
                      <input
                         spellCheck={false}
                         type={field.type}
@@ -22,14 +23,21 @@ function Form({ data }) {
                   </div>
                );
             })}
+            {/* this is checkbox */}
             {data.tick && (
                <div className={cx('field')}>
                   <label htmlFor="tick" className={cx('tick')}>
                      <input type={'checkbox'} id="tick" />
                      <span>{data.tick.name}</span>
                   </label>
+                  {data.tick.description && (
+                     <span className={cx('tick-desc')}>
+                        {data.tick.description}
+                     </span>
+                  )}
                </div>
             )}
+            {/* This is submit button */}
             {
                <div className={cx('field')}>
                   <Button classic large>
@@ -37,10 +45,12 @@ function Form({ data }) {
                   </Button>
                </div>
             }
+            {/* Or separate */}
             {isOr && <div className={cx('field', 'or')}></div>}
+            {/* These are other login method */}
             {data.otherMethods?.map((method) => {
                return (
-                  <div className={cx('field')}>
+                  <div key={method.method} className={cx('field')}>
                      <Button large primary>
                         {method.method === 'google' ? (
                            <img
@@ -57,15 +67,16 @@ function Form({ data }) {
                );
             })}
          </form>
+         {/* These are other feature ( forgot password...) */}
          <div className={cx('feature')}>
             {data.otherFeatures.map((feature, index) => {
                return (
-                  <>
+                  <span key={index}>
                      {index > 0 && <span className={cx('dot')}>·</span>}
                      <Button to={feature.to} className="link">
                         {feature.name}
                      </Button>
-                  </>
+                  </span>
                );
             })}
          </div>
