@@ -8,6 +8,7 @@ import {
    TopFilm,
    FilterPage,
    FAQ,
+   Forgot,
 } from '../Pages';
 const isLogin = false;
 
@@ -39,6 +40,10 @@ const publicRoutes = [
    {
       path: '/signup',
       component: Signup,
+   },
+   {
+      path: '/forgot',
+      component: Forgot,
    },
    {
       path: '/faq',

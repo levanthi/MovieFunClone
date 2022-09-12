@@ -12,7 +12,7 @@ function Form({ data }) {
          <h1 className={cx('title')}>{data.title}</h1>
          <form>
             {/* this is input fields */}
-            {data.fields.map((field) => {
+            {data.fields?.map((field) => {
                return (
                   <div key={field.placeholder} className={cx('field')}>
                      <input
@@ -69,7 +69,7 @@ function Form({ data }) {
          </form>
          {/* These are other feature ( forgot password...) */}
          <div className={cx('feature')}>
-            {data.otherFeatures.map((feature, index) => {
+            {data.otherFeatures?.map((feature, index) => {
                return (
                   <span key={index}>
                      {index > 0 && <span className={cx('dot')}>·</span>}

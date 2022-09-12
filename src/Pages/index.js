@@ -6,3 +6,4 @@ export { default as Profile } from './Profile';
 export { default as TopFilm } from './TopFilm';
 export { default as FilterPage } from './FilterPage';
 export { default as FAQ } from './FAQ';
+export { default as Forgot } from './Fotgot';
