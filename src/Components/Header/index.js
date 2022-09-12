@@ -33,7 +33,6 @@ function Header() {
          headerRef.current.classList.remove(cx('background'));
       };
    }, []);
-   console.log('render');
    return (
       <div ref={headerRef} className={cx('header')}>
          <Link to={'/'} className={cx('brand', 'item')}>

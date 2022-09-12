@@ -1,9 +1,13 @@
-import { Fragment } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Fragment, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { DefaultLayout } from './Layouts';
 import { publicRoutes, privateRoutes, PrivateRoutes } from './routes';
 
 function App() {
+   const location = useLocation();
+   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+   }, [location.pathname]);
    return (
       <div className="App">
          <Routes>
