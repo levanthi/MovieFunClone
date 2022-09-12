@@ -1,0 +1,92 @@
+.form {
+   margin: auto;
+   width: 33.33%;
+   padding: 12px;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   color: #7a7a7a;
+   .title {
+      font-weight: 600;
+      margin-bottom: 2.4rem;
+   }
+   form {
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #363636;
+      display: flex;
+      flex-direction: column;
+      .field + .field {
+         margin-top: 12px;
+      }
+      input[type='email'],
+      input[type='password'],
+      input[type='text'] {
+         width: 100%;
+         color: #363636;
+         font-size: 2.4rem;
+         padding: 12px 17px;
+         border-radius: 5px;
+         border: unset;
+         border-color: #dbdbdb;
+         outline: none;
+         line-height: 1.5;
+         vertical-align: top;
+         &:focus {
+            border-color: #428bca;
+            box-shadow: 0 0 0 0.125em rgb(66 139 202 / 25%);
+         }
+      }
+      .tick {
+         display: flex;
+         width: fit-content;
+         cursor: pointer;
+         &:hover {
+            color: #ffe08a;
+         }
+         span {
+            margin-left: 6px;
+         }
+      }
+      .field {
+         .icon {
+            width: 24px;
+            height: 25px;
+            margin-right: 14px;
+            filter: invert(94%) sepia(75%) saturate(4%) hue-rotate(187deg)
+               brightness(106%) contrast(100%);
+         }
+         button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+      }
+      .or {
+         text-transform: uppercase;
+         font-size: 1.2rem;
+         width: 100%;
+         height: 1px;
+         background-color: white;
+         position: relative;
+         margin: 32px 0 20px 0 !important;
+         &::before {
+            content: 'Hoặc';
+            position: absolute;
+            padding: 8px 12px;
+            background-color: white;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+         }
+      }
+   }
+   .feature {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 1.6rem;
+      margin-top: 24px;
+      .dot {
+         margin: 0 8px;
+      }
+   }
+}

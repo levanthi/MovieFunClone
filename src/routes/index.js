@@ -8,7 +8,7 @@ import {
    FilterPage,
    FAQ,
 } from '../Pages';
-const isLogin = true;
+const isLogin = false;
 
 const PrivateRoutes = ({ children }) => {
    if (isLogin) {
