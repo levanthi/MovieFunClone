@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import styles from './filter.module.scss';
@@ -42,7 +43,7 @@ const filterList = [
          'Tội phạm',
          'Trẻ em',
          'Truyền hình',
-         'Viễn Tây',
+         '     Viễn Tây',
          'Viễn tưởng',
          'Viễn tưởng & Thần thoại',
       ],
@@ -52,7 +53,7 @@ const filterList = [
          'chien-tranh',
          'chien-tranh-chinh-tri',
          'chinh-kich',
-         'gia-dinh',
+         'gia- dinh',
          'giat-gan',
          'hai',
          'hanh-dong',
@@ -257,6 +258,19 @@ function Filter({ view, setViewList }) {
       duration: '',
       sort: 'publishDate',
    });
+   const [filterListState, setFilterList] = useState(filterList);
+   const location = useLocation();
+   useEffect(() => {
+      //type = movie is not have duration filter
+      if (location.pathname === '/type/show') {
+         let newFilterList = filterListState.filter(
+            (filter) => filter.name !== 'duration',
+         );
+         setFilterList(newFilterList);
+      } else {
+         setFilterList(filterList);
+      }
+   }, [location]);
    const handleFilter = (e) => {
       // const newFilterObj = { ...filterObj, [e.target.name]: e.target.value };
       //call API and handle data at here
@@ -271,10 +285,9 @@ function Filter({ view, setViewList }) {
       }
       setViewList((pre) => !pre);
    };
-
    return (
       <div className={cx('filter')}>
-         {filterList.map((filter, index) => {
+         {filterListState.map((filter, index) => {
             return (
                <div key={index} className={cx('filter-item')}>
                   <h4 className={cx('title')}>{filter.title}:</h4>
@@ -285,7 +298,7 @@ function Filter({ view, setViewList }) {
                         onChange={handleFilter}
                         className={cx('select')}
                      >
-                        {filter.default || <option>- Tất cả -</option>}
+                        {filter.default || <option selected>- Tất cả -</option>}
                         {filter.data.map((option, index) => {
                            return (
                               <option key={index} value={filter.value[index]}>
