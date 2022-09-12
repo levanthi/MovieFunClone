@@ -4,3 +4,4 @@ export { default as Login } from './Login';
 export { default as Profile } from './Profile';
 export { default as TopFilm } from './TopFilm';
 export { default as FilterPage } from './FilterPage';
+export { default as FAQ } from './FAQ';
