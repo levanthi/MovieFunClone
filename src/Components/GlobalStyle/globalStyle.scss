@@ -49,6 +49,14 @@ body {
    animation-delay: 0.001s;
 }
 
+.link {
+   color: #428bca;
+   &:hover {
+      color: #dcf836;
+      background-color: unset;
+   }
+}
+
 .view-list {
    svg {
       path {

@@ -12,8 +12,11 @@ function Footer() {
       <div className={cx('footer')}>
          <div className={cx('container')}>
             <h3 className={cx('title')}>
-               Phim chất lượng cao online của XemPhim khác gì so với các trang
-               phim khác?
+               Phim chất lượng cao online của{' '}
+               <Link className="link" to={''}>
+                  XemPhim
+               </Link>{' '}
+               khác gì so với các trang phim khác?
             </h3>
             <ul>
                <li>

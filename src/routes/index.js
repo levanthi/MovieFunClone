@@ -1,5 +1,13 @@
 import { Navigate } from 'react-router-dom';
-import { Home, Search, Login, Profile, TopFilm, FilterPage } from '../Pages';
+import {
+   Home,
+   Search,
+   Login,
+   Profile,
+   TopFilm,
+   FilterPage,
+   FAQ,
+} from '../Pages';
 const isLogin = true;
 
 const PrivateRoutes = ({ children }) => {
@@ -26,6 +34,10 @@ const publicRoutes = [
    {
       path: '/login',
       component: Login,
+   },
+   {
+      path: '/faq',
+      component: FAQ,
    },
    {
       path: '*',
