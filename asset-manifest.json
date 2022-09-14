@@ -1,21 +1,30 @@
 {
   "files": {
-    "main.css": "/MovieFunClone-Frontend/static/css/main.a82a286a.css",
-    "main.js": "/MovieFunClone-Frontend/static/js/main.eaaaa104.js",
+    "main.css": "/MovieFunClone-Frontend/static/css/main.b573f543.css",
+    "main.js": "/MovieFunClone-Frontend/static/js/main.2c89ce2e.js",
     "static/js/787.cda612ba.chunk.js": "/MovieFunClone-Frontend/static/js/787.cda612ba.chunk.js",
     "static/media/footer-bg.jpg": "/MovieFunClone-Frontend/static/media/footer-bg.7b1562b2b943d2f5056c.jpg",
     "static/media/f2.woff2": "/MovieFunClone-Frontend/static/media/f2.9165081d10e1ba601384.woff2",
     "static/media/Oswald.woff2": "/MovieFunClone-Frontend/static/media/Oswald.37ffdd2667b8a0045f0d.woff2",
+    "static/media/slick.svg": "/MovieFunClone-Frontend/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/MovieFunClone-Frontend/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/MovieFunClone-Frontend/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/MovieFunClone-Frontend/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/grid.svg": "/MovieFunClone-Frontend/static/media/grid.5f89ddf4a66bb115da2c01739f58c21a.svg",
+    "static/media/imdb.svg": "/MovieFunClone-Frontend/static/media/imdb.6cdb719a9a9a5a380ebef48ca9513edd.svg",
     "index.html": "/MovieFunClone-Frontend/index.html",
     "static/media/inbox.svg": "/MovieFunClone-Frontend/static/media/inbox.230cc701048d8abb24c835af6350c6cd.svg",
+    "static/media/chevronRight.svg": "/MovieFunClone-Frontend/static/media/chevronRight.d0500e62462f5641eda474b350680ec8.svg",
+    "static/media/google.svg": "/MovieFunClone-Frontend/static/media/google.690b5abf034f6b6fa1acea295a7c7544.svg",
     "static/media/send.svg": "/MovieFunClone-Frontend/static/media/send.afde3bb66ecfe67cc329006c8e064bab.svg",
+    "static/media/chevronLeft.svg": "/MovieFunClone-Frontend/static/media/chevronLeft.16c4d2b28cbfd6bbca716abb675743ef.svg",
     "static/media/facebook.svg": "/MovieFunClone-Frontend/static/media/facebook.996e2eaf03cc38efc98a9fb91eafece3.svg",
-    "main.a82a286a.css.map": "/MovieFunClone-Frontend/static/css/main.a82a286a.css.map",
-    "main.eaaaa104.js.map": "/MovieFunClone-Frontend/static/js/main.eaaaa104.js.map",
+    "main.b573f543.css.map": "/MovieFunClone-Frontend/static/css/main.b573f543.css.map",
+    "main.2c89ce2e.js.map": "/MovieFunClone-Frontend/static/js/main.2c89ce2e.js.map",
     "787.cda612ba.chunk.js.map": "/MovieFunClone-Frontend/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a82a286a.css",
-    "static/js/main.eaaaa104.js"
+    "static/css/main.b573f543.css",
+    "static/js/main.2c89ce2e.js"
   ]
 }
