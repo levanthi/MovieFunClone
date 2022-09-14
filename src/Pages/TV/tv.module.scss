@@ -1,0 +1,185 @@
+.tv {
+   padding: 300px 100px 70px;
+   position: relative;
+   z-index: 2;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   .background {
+      background-image: url('https://image.tmdb.org/t/p/original/vvObT0eIWGlArLQx3K5wZ0uT812.jpg');
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 600px;
+      display: block;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 0;
+      &::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         bottom: 0;
+         right: 0;
+         background-color: rgba(2, 13, 24, 0.75);
+      }
+   }
+   .body {
+      position: relative;
+      z-index: 10;
+   }
+}
+.tv-col {
+   padding: 12px 32px !important;
+   img {
+      width: 100%;
+   }
+   button {
+      font-size: 2rem;
+      font-weight: 500;
+      height: 50px;
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+         width: 20px;
+         height: 22px;
+         margin-right: 20px;
+      }
+      &:hover {
+         filter: unset;
+         background-color: #f03a5f;
+      }
+   }
+}
+.tv-col-2 {
+   padding: 22px 32px !important;
+   .title {
+      font-family: serif;
+      font-size: 4.5rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+   }
+   .sub-title {
+      color: var(--text-color);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+         Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+         sans-serif;
+      font-weight: 400;
+      font-size: 2.4rem;
+      margin-bottom: 3.6rem;
+   }
+   .duration {
+      font-size: 1.2rem;
+      padding: 0 9px;
+      margin-bottom: 1.6rem;
+   }
+   .imbd {
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      img {
+         width: 50px;
+         height: 40px;
+         margin-right: 6px;
+      }
+   }
+   .share-genres {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5.6rem;
+      .share {
+         display: flex;
+         align-items: center;
+         svg {
+            width: 19px;
+            height: 20px;
+            path {
+               fill: white;
+            }
+         }
+         a,
+         button {
+            display: flex;
+            align-items: center;
+         }
+         > * {
+            margin-right: 1.2rem;
+         }
+      }
+      .genres {
+         > * {
+            margin-left: 8px;
+         }
+      }
+   }
+   .info {
+      margin-bottom: 2.4rem;
+      .item {
+         display: flex;
+      }
+      .title {
+         text-transform: uppercase;
+         font-size: 1.6rem;
+         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+            sans-serif;
+         color: #7a7a7a;
+         width: 120px;
+      }
+      .value {
+         a {
+            font-weight: bold;
+            color: #dbdbdb;
+            &:hover {
+               background-color: unset;
+               color: currentColor;
+               text-decoration: underline;
+            }
+         }
+      }
+   }
+   .description {
+      color: #b5b5b5;
+   }
+   .season {
+      .title {
+         margin: 28px 0 17px;
+         font-size: 1.45rem;
+         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+            sans-serif;
+         text-transform: uppercase;
+         font-weight: 700;
+      }
+      .body {
+         display: flex;
+         img {
+            width: 130px;
+         }
+         .info {
+            margin-left: 1.6rem;
+            a {
+               font-family: Merriweather, serif;
+               font-size: 2rem;
+               font-weight: 400;
+               color: #428bca;
+               cursor: pointer;
+               margin-bottom: 12px;
+               display: block;
+               &:hover {
+                  background-color: unset;
+                  color: #dcf836;
+               }
+            }
+            p {
+               color: #b5b5b5;
+               line-height: 1.5;
+            }
+         }
+      }
+   }
+}

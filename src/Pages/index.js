@@ -7,3 +7,4 @@ export { default as TopFilm } from './TopFilm';
 export { default as FilterPage } from './FilterPage';
 export { default as FAQ } from './FAQ';
 export { default as Forgot } from './Fotgot';
+export { default as TV } from './TV';

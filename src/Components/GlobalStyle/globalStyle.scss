@@ -1,4 +1,6 @@
 @import 'normalize.css';
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 @font-face {
    font-family: 'BlinkMacSystemFont';
    src: url('../../assets/fonts/f2.woff2');
@@ -12,6 +14,7 @@
 :root {
    --background: #06121e;
    --color: white;
+   --text-color: rgb(181, 181, 181);
    --primaryColor: rgb(207, 33, 34);
 }
 
@@ -71,6 +74,21 @@ body {
 select {
    user-select: none;
 }
+.slick-disabled {
+   img {
+      filter: invert(23%) sepia(7%) saturate(1388%) hue-rotate(167deg)
+         brightness(89%) contrast(85%);
+   }
+}
+.overlay {
+   position: fixed;
+   z-index: 99999;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   background-color: rgba(black, 0.7);
+}
 
 @keyframes envade {
    from {
@@ -96,6 +114,9 @@ select {
 .l-12 {
    width: 100%;
 }
+.l-9 {
+   width: 75%;
+}
 .l-6 {
    width: 50%;
 }
@@ -112,6 +133,9 @@ select {
 @media (min-width: 750px) and (max-width: 1199px) {
    .m-12 {
       width: 100%;
+   }
+   .m-9 {
+      width: 75%;
    }
    .m-6 {
       width: 50%;
@@ -130,6 +154,9 @@ select {
 @media (max-width: 749px) {
    .c-12 {
       width: 100%;
+   }
+   .c-9 {
+      width: 75%;
    }
    .c-6 {
       width: 50%;

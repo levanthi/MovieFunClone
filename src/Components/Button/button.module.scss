@@ -19,7 +19,7 @@ a {
 .medium {
    padding: 7px 16px;
    height: 40px;
-   min-width: 120px;
+   min-width: 110px;
    font-size: 1.6rem;
 }
 .large {
@@ -39,7 +39,6 @@ a {
 .primary {
    background-color: var(--primaryColor);
 }
-
 .layout {
    background-color: transparent;
    font-size: 1.4rem;
@@ -49,6 +48,51 @@ a {
    font-family: sans-serif;
    height: 48px;
    width: 160px;
+}
+.danger {
+   background-color: #dd003f;
+   text-transform: uppercase;
+}
+.facebook {
+   background-color: #3e56c4;
+   border-radius: 5px;
+   font-size: 1.6rem;
+   font-weight: 400;
+   svg {
+      margin-right: 1.4rem;
+   }
+   &:hover {
+      filter: brightness(0.95);
+      background-color: #3e56c4;
+      color: white;
+   }
+}
+.collection {
+   background-color: transparent;
+   border-radius: 5px;
+   color: #3e8ed0;
+   border: 1px solid currentColor;
+   svg {
+      margin-right: 0.8rem;
+   }
+   &:hover {
+      background-color: #3488ce;
+      color: white;
+      border-color: #3488ce;
+   }
+}
+.genre {
+   height: 30px;
+   color: white;
+   background-color: transparent;
+   border-radius: 9999px;
+   padding: 5px 15px;
+   border: 1px solid white;
+   font-size: 1.2rem;
+   &:hover {
+      background-color: white;
+      color: #485fc7;
+   }
 }
 
 .genre-list-view {

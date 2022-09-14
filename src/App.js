@@ -7,7 +7,7 @@ function App() {
    const location = useLocation();
    useEffect(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-   }, [location.pathname]);
+   }, [location?.pathname]);
    return (
       <div className="App">
          <Routes>

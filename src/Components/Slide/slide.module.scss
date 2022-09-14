@@ -1,0 +1,28 @@
+.title {
+   font-size: 1.4rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   margin: 28px 0 17px;
+}
+.arrow {
+   background-color: transparent !important;
+   position: absolute;
+   top: -17px !important;
+   transform: translateY(-80%) !important;
+   img {
+      width: 12px;
+      height: 20px;
+      filter: invert(99%) sepia(46%) saturate(2%) hue-rotate(119deg)
+         brightness(106%) contrast(100%);
+   }
+   &::before {
+      display: none;
+   }
+}
+.right {
+   right: 0 !important;
+}
+.left {
+   right: 30px !important;
+   left: unset !important;
+}
