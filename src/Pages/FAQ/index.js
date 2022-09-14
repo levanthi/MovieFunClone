@@ -36,13 +36,19 @@ function FAQ() {
                   nhà mạng; 2. Sử dụng một VPN (mạng riêng ảo) để tăng tốc độ
                   cho mạng của bạn. Chúng tôi{' '}
                   <b>đề xuất bạn dùng ứng dụng WARP</b> ={'>'}{' '}
-                  <a target={'_blank'} href="https://1.1.1.1/" className="link">
+                  <a
+                     target={'_blank'}
+                     rel="noreferrer"
+                     href="https://1.1.1.1/"
+                     className="link"
+                  >
                      download tại đây
                   </a>
                   ( hoặc tải WARP+{' '}
                   <a
                      href="https://apkcombo.com/vi/vpn/"
                      target={'_blank'}
+                     rel="noreferrer"
                      className="link"
                   >
                      tại đây
@@ -87,6 +93,7 @@ function FAQ() {
                   <a
                      href="https://play.google.com/store/apps/details?id=org.mozilla.firefox"
                      target={'_blank'}
+                     rel="noreferrer"
                      className="link"
                   >
                      cài {'&'} dùng trình duyệt Firefox
@@ -107,6 +114,7 @@ function FAQ() {
                   <a
                      href="https://imgur.com/a/D6nPGcl"
                      target={'_blank'}
+                     rel="noreferrer"
                      className="link"
                   >
                      click vào đây

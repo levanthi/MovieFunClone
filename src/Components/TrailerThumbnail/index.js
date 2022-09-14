@@ -1,31 +1,24 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import styles from './trailerThumbnail.module.scss';
+import clientSlice from '../../redux/clientSlice';
 
 const cx = classNames.bind(styles);
 
-//  Get thumbnail youtube video from embed
-function getThumbnail(embed) {
-   let videoId = embed.slice(embed.indexOf('https://'));
-   videoId = videoId.slice(0, videoId.indexOf('"'));
-   videoId = videoId.slice(videoId.lastIndexOf('/') + 1);
-   return videoId;
-}
-
 function TrailerThumbnail({ data }) {
-   const videoID = getThumbnail(data);
-   const [openTrailer, setOpenTrailer] = useState(false);
+   const dispatch = useDispatch();
    const handleClick = () => {
-      setOpenTrailer((pre) => !pre);
+      dispatch(clientSlice.actions.toggleOverlay());
+      dispatch(clientSlice.actions.setTrailer(data));
    };
    return (
       <>
          <div className={cx('thumbnail')} onClick={handleClick}>
             <img
                alt="thumbnail"
-               src={`https://img.youtube.com/vi/${videoID}/0.jpg`}
+               src={`https://img.youtube.com/vi/${data}/0.jpg`}
             />
             <FontAwesomeIcon icon={faPlay} />
          </div>

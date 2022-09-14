@@ -67,12 +67,12 @@ const trailers = {
    slidesToShow: 4,
    slidesToScroll: 4,
    data: [
-      '<iframe width="1583" height="588" src="https://www.youtube.com/embed/x8UAUAuKNcU" title="The Lord of the Rings: The Rings of Power - Official Trailer | Prime Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-      '<iframe width="1583" height="588" src="https://www.youtube.com/embed/x8UAUAuKNcU" title="The Lord of the Rings: The Rings of Power - Official Trailer | Prime Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-      '<iframe width="1583" height="588" src="https://www.youtube.com/embed/x8UAUAuKNcU" title="The Lord of the Rings: The Rings of Power - Official Trailer | Prime Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-      '<iframe width="1583" height="588" src="https://www.youtube.com/embed/x8UAUAuKNcU" title="The Lord of the Rings: The Rings of Power - Official Trailer | Prime Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-      '<iframe width="1583" height="588" src="https://www.youtube.com/embed/x8UAUAuKNcU" title="The Lord of the Rings: The Rings of Power - Official Trailer | Prime Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-      '<iframe width="1583" height="588" src="https://www.youtube.com/embed/x8UAUAuKNcU" title="The Lord of the Rings: The Rings of Power - Official Trailer | Prime Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+      'x8UAUAuKNcU',
+      'x8UAUAuKNcU',
+      'x8UAUAuKNcU',
+      'x8UAUAuKNcU',
+      'x8UAUAuKNcU',
+      'x8UAUAuKNcU',
    ],
 };
 

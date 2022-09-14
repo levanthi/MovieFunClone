@@ -24,9 +24,9 @@ function Header() {
    useEffect(() => {
       window.addEventListener('scroll', () => {
          if (window.scrollY >= 100) {
-            headerRef.current.classList.add(cx('background'));
+            headerRef.current?.classList.add(cx('background'));
          } else {
-            headerRef.current.classList.remove(cx('background'));
+            headerRef.current?.classList.remove(cx('background'));
          }
       });
       return () => {

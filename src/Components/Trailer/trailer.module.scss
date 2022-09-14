@@ -1,0 +1,19 @@
+.trailer {
+   width: fit-content;
+   max-width: 100%;
+   iframe {
+      max-width: 100%;
+   }
+}
+
+@media (max-width: 1200px) and (min-width: 740px) {
+   iframe {
+      height: 450px;
+   }
+}
+
+@media (max-width: 739px) {
+   iframe {
+      height: 300px;
+   }
+}
