@@ -262,7 +262,7 @@ function Filter({ view, setViewList }) {
    const location = useLocation();
    useEffect(() => {
       //type = movie is not have duration filter
-      if (location.pathname === '/type/show') {
+      if (location?.pathname === '/type/show') {
          let newFilterList = filterListState.filter(
             (filter) => filter.name !== 'duration',
          );

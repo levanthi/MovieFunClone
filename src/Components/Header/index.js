@@ -30,7 +30,7 @@ function Header() {
          }
       });
       return () => {
-         headerRef.current.classList.remove(cx('background'));
+         headerRef.current?.classList.remove(cx('background'));
       };
    }, []);
    return (

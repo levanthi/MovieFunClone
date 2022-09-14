@@ -1,0 +1,33 @@
+.avatar {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   a,
+   .name {
+      cursor: pointer;
+      &:hover {
+         background-color: unset;
+         text-decoration: underline;
+      }
+   }
+   .img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-size: cover;
+      border: 1px solid transparent;
+      &:hover {
+         border-color: orange;
+      }
+   }
+   .name {
+      color: #dbdbdb;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin: 10px 0 6px;
+   }
+   .sub-name {
+      color: #7a7a7a;
+      font-size: 1.4rem;
+   }
+}

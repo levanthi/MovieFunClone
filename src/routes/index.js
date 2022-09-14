@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+import { TvLayout } from '../Layouts';
 import {
    Home,
    Search,
@@ -9,6 +10,7 @@ import {
    FilterPage,
    FAQ,
    Forgot,
+   TV,
 } from '../Pages';
 const isLogin = false;
 
@@ -44,6 +46,11 @@ const publicRoutes = [
    {
       path: '/forgot',
       component: Forgot,
+   },
+   {
+      path: '/tv/*',
+      component: TV,
+      layout: TvLayout,
    },
    {
       path: '/faq',

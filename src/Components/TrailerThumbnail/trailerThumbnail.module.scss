@@ -1,0 +1,24 @@
+.thumbnail {
+   width: fit-content;
+   border: 2px solid transparent;
+   cursor: pointer;
+   position: relative;
+   &:hover {
+      border-color: rgb(214, 139, 0);
+      svg {
+         display: block;
+      }
+   }
+   img {
+      width: 222px;
+   }
+   svg {
+      display: none;
+      position: absolute;
+      width: 36px;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+}
