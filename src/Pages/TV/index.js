@@ -86,7 +86,7 @@ function TV() {
                   src="https://image.tmdb.org/t/p/w342/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg"
                   alt="thumbnail"
                />
-               <Button danger large>
+               <Button to={'/watch'} danger large>
                   <FontAwesomeIcon icon={faPlay} />
                   Xem phim
                </Button>
@@ -119,7 +119,7 @@ function TV() {
                         medium
                      >
                         <FontAwesomeIcon icon={faSquareFacebook} />
-                        <span>Chia se</span>
+                        <span>Chia sẻ</span>
                      </Button>
                      <Button collection medium>
                         <FontAwesomeIcon icon={faPlus} />

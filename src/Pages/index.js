@@ -8,3 +8,4 @@ export { default as FilterPage } from './FilterPage';
 export { default as FAQ } from './FAQ';
 export { default as Forgot } from './Fotgot';
 export { default as TV } from './TV';
+export { default as Watch } from './Watch';

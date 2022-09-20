@@ -1,5 +1,5 @@
 .tv {
-   padding: 300px 100px 70px;
+   padding: 300px 30px 70px;
    position: relative;
    z-index: 2;
    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -35,7 +35,7 @@
    img {
       width: 100%;
    }
-   button {
+   a {
       font-size: 2rem;
       font-weight: 500;
       height: 50px;
@@ -51,6 +51,7 @@
       &:hover {
          filter: unset;
          background-color: #f03a5f;
+         color: white;
       }
    }
 }

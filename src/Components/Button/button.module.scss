@@ -31,6 +31,9 @@ a {
    border-radius: 5px;
 }
 .small {
+   height: 30px;
+   padding: 5px 12px;
+   font-size: 1.3rem !important;
 }
 
 .classic {
@@ -93,6 +96,13 @@ a {
       background-color: white;
       color: #485fc7;
    }
+}
+.episode {
+   height: 40px;
+   padding: 7px 16px;
+   background-color: #48c78e;
+   font-size: 1.6rem;
+   border-radius: 5px;
 }
 
 .genre-list-view {

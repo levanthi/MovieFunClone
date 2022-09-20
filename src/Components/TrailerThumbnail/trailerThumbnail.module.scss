@@ -1,16 +1,20 @@
 .thumbnail {
+   padding-right: 24px;
    width: fit-content;
-   border: 2px solid transparent;
-   cursor: pointer;
    position: relative;
+   cursor: pointer;
    &:hover {
-      border-color: rgb(214, 139, 0);
+      img {
+         border-color: rgb(214, 139, 0);
+      }
       svg {
          display: block;
       }
    }
    img {
-      width: 222px;
+      width: 100%;
+      height: auto;
+      border: 2px solid transparent;
    }
    svg {
       display: none;

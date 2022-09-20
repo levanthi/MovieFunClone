@@ -4,25 +4,7 @@ import styles from './button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({
-   to,
-   href,
-   medium,
-   large,
-   small,
-   primary,
-   classic,
-   layout,
-   danger,
-   children,
-   genreListView,
-   pagination,
-   facebook,
-   collection,
-   genre,
-   paginationActive,
-   ...rest
-}) {
+function Button({ genreListView, className, to, href, children, ...rest }) {
    let Comp = 'button';
    const props = {};
    if (to) {
@@ -34,23 +16,11 @@ function Button({
    }
    return (
       <Comp
-         className={cx('wrapper', {
-            medium,
-            small,
-            large,
-            primary,
-            classic,
-            layout,
-            danger,
-            facebook,
-            collection,
-            genre,
+         className={cx('wrapper', className, {
             'genre-list-view': genreListView,
-            pagination: pagination,
-            paginationActive: paginationActive,
+            ...rest,
          })}
          {...props}
-         {...rest}
       >
          {children}
       </Comp>

@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { TvLayout } from '../Layouts';
+import { TvLayout, WatchLayout } from '../Layouts';
 import {
    Home,
    Search,
@@ -11,6 +11,7 @@ import {
    FAQ,
    Forgot,
    TV,
+   Watch,
 } from '../Pages';
 const isLogin = false;
 
@@ -51,6 +52,11 @@ const publicRoutes = [
       path: '/tv/*',
       component: TV,
       layout: TvLayout,
+   },
+   {
+      path: '/watch/*',
+      component: Watch,
+      layout: WatchLayout,
    },
    {
       path: '/faq',

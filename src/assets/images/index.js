@@ -6,6 +6,8 @@ const images = {
    Google: require('./google.svg').default,
    ChevronRight: require('./chevronRight.svg').default,
    ChevronLeft: require('./chevronLeft.svg').default,
+   subtitle: require('./subtitle.svg').default,
+   picture: require('./pic-in-pic.svg').default,
 };
 
 export { images };
