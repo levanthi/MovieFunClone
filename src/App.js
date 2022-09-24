@@ -10,7 +10,7 @@ function App() {
    const location = useLocation();
    const showOverlay = useSelector(getOverlay);
    useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
    }, [location?.pathname]);
    return (
       <div className="App">
