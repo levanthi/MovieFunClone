@@ -45,7 +45,6 @@ function compare(a, b) {
 }
 
 function Slide({ data }) {
-   const [actors, setActors] = useState([]);
    const settings = {
       infinite: false,
       slidesToShow: data.slidesToShow || 6,
@@ -53,18 +52,11 @@ function Slide({ data }) {
       nextArrow: <NextArrow />,
       prevArrow: <PreArrow />,
    };
-   useEffect(() => {
-      const newData = data.data;
-      if (typeof newData === 'object') {
-         newData.sort(compare);
-      }
-      setActors(data.data);
-   }, [data.data]);
    return (
       <div className={cx('slide')}>
          <h2 className={cx('title')}> {data.title} </h2>
          <Slider {...settings}>
-            {actors?.map((item, index) => {
+            {data.data?.map((item, index) => {
                return <data.Component key={index} data={item} />;
             })}
          </Slider>

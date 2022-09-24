@@ -22,28 +22,8 @@ function TV() {
          location.pathname.lastIndexOf('/') + 1,
       );
       axios.get(`/movie/${movieId}`).then(async (res) => {
-         const data = res.data;
-
-         const foundatorIds = res.data.foundation;
-         const foundations = [];
-
-         const actorIds = res.data.actors;
-         const actors = [];
-
-         Promise.all(
-            foundatorIds.map(async (id) => {
-               const res = await axios.get(`/person/name/${id}`);
-               foundations.push(res.data);
-            }),
-            actorIds.map(async (id) => {
-               const res = await axios.get(`/person/avatar-info/${id}`);
-               actors.push(res.data);
-            }),
-         ).then(() => {
-            data.foundation = foundations;
-            data.actors = actors;
-            setData(data);
-         });
+         console.log(res.data);
+         setData(res.data);
       });
    }, [location.pathname]);
    return (
@@ -123,6 +103,7 @@ function TV() {
                               </span>
                            );
                         })}
+                        {data.foundation?.length || 'N/A'}
                      </div>
                   </div>
                   <div className={cx('item')}>
@@ -149,15 +130,17 @@ function TV() {
                   }}
                />
 
-               <Slide
-                  data={{
-                     title: 'trailer',
-                     Component: TrailerThumbnail,
-                     slidesToShow: 4,
-                     slidesToScroll: 4,
-                     data: data.trailers,
-                  }}
-               />
+               <div className={'trailer'}>
+                  <Slide
+                     data={{
+                        title: 'trailer',
+                        Component: TrailerThumbnail,
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        data: data.trailers,
+                     }}
+                  />
+               </div>
 
                <div className={cx('season')}>
                   <div className={cx('title')}>season</div>
