@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function Avatar({ data }) {
    return (
       <div className={cx('avatar')}>
-         <Link to={''}>
+         <Link to={`/person/${data._id}`}>
             <div
                className={cx('img')}
                style={{
@@ -18,7 +18,6 @@ function Avatar({ data }) {
          <Link className={cx('name')} to={''}>
             {data.name}
          </Link>
-         <span className={cx('sub-name')}>{data.subname}</span>
       </div>
    );
 }
