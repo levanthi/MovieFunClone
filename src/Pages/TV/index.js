@@ -64,8 +64,8 @@ const actors = {
 const trailers = {
    title: 'trailer',
    Component: TrailerThumbnail,
-   slidesToShow: 6,
-   slidesToScroll: 6,
+   slidesToShow: 4,
+   slidesToScroll: 4,
    data: [
       'x8UAUAuKNcU',
       'x8UAUAuKNcU',
