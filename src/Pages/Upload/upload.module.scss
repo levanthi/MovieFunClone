@@ -1,0 +1,14 @@
+.form {
+   width: 100%;
+   div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+   }
+   input {
+      padding: 6px 22px;
+   }
+   * {
+      font-size: 2rem;
+   }
+}

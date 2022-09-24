@@ -1,0 +1,41 @@
+.left {
+   padding: 12px 32px 12px 0;
+   img {
+      margin-bottom: 40px;
+   }
+   h3 {
+      font-weight: 500;
+      font-size: 2rem;
+      margin-bottom: 20px;
+   }
+   h4 {
+      margin-bottom: 6px;
+      color: #dbdbdb;
+   }
+   span {
+      color: #b5b5b5;
+      margin-bottom: 24px;
+      display: block;
+   }
+}
+
+.right {
+   padding: 12px 32px;
+   h1 {
+      font-size: 4rem;
+      font-weight: 500;
+   }
+   h3 {
+      margin: 26px 0 8px;
+      font-weight: 500;
+   }
+   p {
+      color: #b5b5b5;
+      line-height: 1.5;
+   }
+   .photo-group {
+      img {
+         padding: 12px 24px;
+      }
+   }
+}

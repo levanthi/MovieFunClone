@@ -36,8 +36,8 @@ function PreArrow(props) {
 function Slide({ data }) {
    const settings = {
       infinite: false,
-      slidesToShow: data.slidesToShow || 6,
-      slidesToScroll: data.slidesToScroll || 6,
+      slidesToShow: data.slidesToShow,
+      slidesToScroll: data.slidesToScroll,
       nextArrow: <NextArrow />,
       prevArrow: <PreArrow />,
    };

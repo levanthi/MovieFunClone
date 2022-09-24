@@ -67,11 +67,18 @@ const testData = [
    },
 ];
 
-function MovieList({ movieList = testData || [], list }) {
+function MovieList({ movieList = testData || [], list, className }) {
    return (
-      <div className={cx('movie-list') + ' row'}>
+      <div className={cx('movie-list', 'row')}>
          {movieList.map((movie, index) => {
-            return <MovieItem key={index} data={movie} list={list} />;
+            return (
+               <MovieItem
+                  className={className}
+                  key={index}
+                  data={movie}
+                  list={list}
+               />
+            );
          })}
       </div>
    );

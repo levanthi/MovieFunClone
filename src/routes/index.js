@@ -12,6 +12,8 @@ import {
    Forgot,
    TV,
    Watch,
+   Upload,
+   Person,
 } from '../Pages';
 const isLogin = false;
 
@@ -61,6 +63,14 @@ const publicRoutes = [
    {
       path: '/faq',
       component: FAQ,
+   },
+   {
+      path: '/upload',
+      component: Upload,
+   },
+   {
+      path: '/person/*',
+      component: Person,
    },
    {
       path: '*',

@@ -35,6 +35,8 @@ body {
       sans-serif;
    background-color: var(--background);
    color: var(--color);
+   display: flex;
+   justify-content: center;
 }
 
 .body {

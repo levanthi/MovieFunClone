@@ -6,7 +6,7 @@ import { images } from '../../../assets/images';
 
 const cx = classNames.bind(styles);
 
-function MovieItem({ data, list }) {
+function MovieItem({ data, list, className }) {
    return list ? (
       <div className={cx('movie-item', 'view-list')}>
          <Link to={''}>
@@ -46,7 +46,7 @@ function MovieItem({ data, list }) {
          </div>
       </div>
    ) : (
-      <div className={cx('movie-item') + ' col l-2-4'}>
+      <div className={cx('movie-item', 'col', className || 'l-2-4')}>
          <Link to="">
             <img alt="thumbnail" src={data.thumbnail} />
          </Link>

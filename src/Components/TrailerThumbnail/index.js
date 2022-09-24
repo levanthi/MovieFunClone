@@ -14,15 +14,13 @@ function TrailerThumbnail({ data }) {
       dispatch(clientSlice.actions.setTrailer(data));
    };
    return (
-      <>
-         <div className={cx('thumbnail')} onClick={handleClick}>
-            <img
-               alt="thumbnail"
-               src={`https://img.youtube.com/vi/${data}/0.jpg`}
-            />
-            <FontAwesomeIcon icon={faPlay} />
-         </div>
-      </>
+      <div className={cx('thumbnail')} onClick={handleClick}>
+         <img
+            alt="thumbnail"
+            src={`https://img.youtube.com/vi/${data}/0.jpg`}
+         />
+         <FontAwesomeIcon icon={faPlay} />
+      </div>
    );
 }
 
