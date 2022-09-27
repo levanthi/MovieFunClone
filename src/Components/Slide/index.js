@@ -51,6 +51,7 @@ function Slide({ data }) {
       slidesToScroll: data.slidesToScroll || 6,
       nextArrow: <NextArrow />,
       prevArrow: <PreArrow />,
+      speed: 800,
    };
    return (
       <div className={cx('slide')}>

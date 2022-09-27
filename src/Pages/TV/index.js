@@ -22,10 +22,10 @@ function TV() {
          location.pathname.lastIndexOf('/') + 1,
       );
       axios.get(`/movie/${movieId}`).then(async (res) => {
-         console.log(res.data);
          setData(res.data);
       });
    }, [location.pathname]);
+   console.log(data);
    return (
       <div className={cx('tv')}>
          <span
@@ -50,7 +50,13 @@ function TV() {
                </h3>
 
                <div className={cx('duration')}>
-                  <b>TV-14</b>
+                  <b>
+                     {data.duration
+                        ? `${Math.floor(data.duration / 60)} giờ ${
+                             data.duration % 60
+                          } phút`
+                        : ''}
+                  </b>
                </div>
 
                <div className={cx('imbd')}>
@@ -103,7 +109,7 @@ function TV() {
                               </span>
                            );
                         })}
-                        {data.foundation?.length || 'N/A'}
+                        {!!data.foundation?.length || 'N/A'}
                      </div>
                   </div>
                   <div className={cx('item')}>

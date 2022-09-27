@@ -214,119 +214,6 @@ const duration = {
    value: ['0-30', '30-60', '60-90', '90-120', '120-150', '150-180', '180-0'],
 };
 
-// function Upload() {
-//    const form = useRef();
-//    const handleSubmit = (e) => {
-//       const data = {};
-//       e.preventDefault();
-//       [...form.current.elements].forEach((element) => {
-//          if (element.name) {
-//             data[element.name] = element.value;
-//          }
-//       });
-//       axios.post('/movie', data);
-//       console.log(data);
-//    };
-//    return (
-//       <div>
-//          <form ref={form} onSubmit={handleSubmit} className={cx('form')}>
-//             <div>
-//                <label>Name</label>
-//                <input name="name" />
-//             </div>
-//             <div>
-//                <label>subname</label>
-//                <input name="subname" />
-//             </div>
-//             <div>
-//                <label>thumbnail</label>
-//                <input name="thumbnail" />
-//             </div>
-//             <div>
-//                <label>type</label>
-//                <select name="type">
-//                   <option value={'movie'}>PHim lẻ</option>
-//                   <option value={'show'}>PHim bộ</option>
-//                </select>
-//             </div>
-//             <div>
-//                <label>year</label>
-//                <select name="year">
-//                   {year.value.map((value, index) => {
-//                      return (
-//                         <option key={value} value={value}>
-//                            {year.data[index]}
-//                         </option>
-//                      );
-//                   })}
-//                </select>
-//             </div>
-//             <div>
-//                <label>duration</label>
-//                <select name="duration">
-//                   {duration.value.map((value, index) => {
-//                      return (
-//                         <option key={value} value={value}>
-//                            {duration.data[index]}
-//                         </option>
-//                      );
-//                   })}
-//                </select>
-//             </div>
-//             <div>
-//                <label>IMDB</label>
-//                <input name="IMDB" />
-//             </div>
-//             <div>
-//                <label>genres</label>
-//                <select name="genres" multiple>
-//                   {genres.value.map((value, index) => {
-//                      return (
-//                         <option key={value} value={value}>
-//                            {genres.name[index]}
-//                         </option>
-//                      );
-//                   })}
-//                </select>
-//             </div>
-//             <div>
-//                <label>foundation</label>
-//                <input name="foundation" />
-//             </div>
-//             <div>
-//                <label>country</label>
-//                <select name="country">
-//                   {country.value.map((value, index) => {
-//                      return (
-//                         <option key={value} value={value}>
-//                            {country.data[index]}
-//                         </option>
-//                      );
-//                   })}
-//                </select>
-//             </div>
-//             <div>
-//                <label>PREMIERE</label>
-//                <input name="premiere" />
-//             </div>
-//             <div>
-//                <label>description</label>
-//                <textarea name="description"></textarea>
-//             </div>
-//             <div>
-//                <label>actors</label>
-//                <select name="actors"></select>
-//             </div>
-//             <div>
-//                <label>trailers</label>
-//                <textarea name="trailers"></textarea>
-//             </div>
-//             <button> SUBMIT </button>
-//          </form>
-//       </div>
-//    );
-// }
-
 function Upload() {
    const form = useRef();
    //upload person
@@ -366,7 +253,6 @@ function Upload() {
          name: country.name[countryIndex],
          value: country.value[countryIndex],
       };
-      console.log(result);
       axios.post('/movie', result).then((res) => console.log(res.data));
    };
    const handleSelect = (e) => {
@@ -377,6 +263,7 @@ function Upload() {
    };
 
    return (
+      //movie
       <div>
          <form ref={form} onSubmit={handleSubmit} className={cx('form')}>
             <div>
@@ -385,7 +272,7 @@ function Upload() {
             </div>
             <div>
                <label>Subname</label>
-               <input name="subname" />
+               <input name="subName" />
             </div>
             <div>
                <label>type</label>
@@ -464,15 +351,7 @@ function Upload() {
             </div>
             <div>
                <label>duration</label>
-               <select name="duration">
-                  {duration.name.map((name, index) => {
-                     return (
-                        <option value={duration.value[index]} key={index}>
-                           {name}
-                        </option>
-                     );
-                  })}
-               </select>
+               <input type={'number'} name="duration" />
             </div>
             <div>
                <label>premiere</label>
@@ -506,7 +385,7 @@ function Upload() {
          </form>
       </div>
 
-      //actor
+      //person
       // <div>
       //    <form onSubmit={handleSubmit} ref={form} className={cx('form')}>
       //       <div>
@@ -539,11 +418,11 @@ function Upload() {
       //       </div>
       //       <div>
       //          <label>movieParticipated</label>
-      //          <input name="movieParticipated" />
+      //          <textarea name="movieParticipated" />
       //       </div>
       //       <div>
       //          <label>photos</label>
-      //          <input name="photos" />
+      //          <textarea name="photos" />
       //       </div>
       //       <button>SUBMIT</button>
       //    </form>

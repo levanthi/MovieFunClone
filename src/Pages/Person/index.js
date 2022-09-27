@@ -20,23 +20,23 @@ function Person() {
          })
          // add some <br/> tag in story
          .then((res) => {
-            storyRef.current.innerHTML = res.story;
+            storyRef.current.innerHTML =
+               res.story || 'Chưa có thông tin tiểu sử của người này';
          });
    }, []);
-   console.log(person);
    return (
       <div className={cx('person', 'row', 'container')}>
          <div className={cx('l-3', 'left')}>
-            <img alt="thumbnail" src={person.thumbnail} />
+            {person.thumbnail && <img alt="thumbnail" src={person.thumbnail} />}
             <h3>Thông tin cá nhân</h3>
             <h4>Nghề nghiệp</h4>
-            <span>Diễn viên</span>
+            <span>{person.job}</span>
             <h4>Giới tính </h4>
-            <span>Nam</span>
+            <span>{person.gender}</span>
             <h4>Ngày sinh</h4>
-            <span>9/4/1974</span>
+            <span>{person.dateOfBirth || 'N/A'}</span>
             <h4>Nơi sinh</h4>
-            <span>Buton-on-Trent, Staffordshire, England, UK</span>
+            <span>{person.placeOfBirth || 'N/A'}</span>
          </div>
          <div className={cx('l-9', 'right')}>
             <h1>{person.name}</h1>
