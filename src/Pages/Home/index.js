@@ -1,57 +1,43 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './home.module.scss';
 import Filter from '../../Components/Filter';
 import MovieList from '../../Components/Movies/MovieList';
 import GroupOfFilm from '../../Components/GroupOfFilm';
+import axios from '../../Components/Axios';
 
 const cx = classNames.bind(styles);
 
-const movieList = [
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-   {
-      thumbnail:
-         'https://image.tmdb.org/t/p/w342/z2yahl2uefxDCl0nogcRBstwruJ.jpg',
-      name: 'Gia Tộc Rồng',
-      rawName: 'House of the Dragon',
-   },
-];
-
 function Home() {
+   const [nominated, setNominated] = useState([]);
+   const [show, setShow] = useState([]);
+   const [movie, setMovie] = useState([]);
+
+   useEffect(() => {
+      axios.get('/movie/nominated').then((res) => {
+         setNominated(res.data);
+      });
+
+      axios.get('/movie/show/home').then((res) => {
+         setShow(res.data);
+      });
+
+      axios.get('/movie/movie/home').then((res) => {
+         setMovie(res.data);
+      });
+   }, []);
    return (
       <div className={cx('home') + ' container'}>
          <Filter />
 
          <GroupOfFilm title="phim đề cử" />
-         <MovieList movieList={movieList} />
+         <MovieList movieList={nominated} />
 
          <GroupOfFilm title="phim lẻ mới cập nhật" to={'/something'} />
-         <MovieList movieList={movieList.concat(movieList)} />
+         <MovieList movieList={show} />
 
          <GroupOfFilm title="phim bộ mới cập nhật" to={'/something1'} />
-         <MovieList movieList={movieList.concat(movieList)} />
+         <MovieList movieList={movie} />
       </div>
    );
 }

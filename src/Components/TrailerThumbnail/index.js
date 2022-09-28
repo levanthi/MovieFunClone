@@ -17,7 +17,7 @@ function TrailerThumbnail({ data }) {
       <div className={cx('thumbnail')} onClick={handleClick}>
          <img
             alt="thumbnail"
-            src={`https://img.youtube.com/vi/${data}/0.jpg`}
+            src={`https://img.youtube.com/vi/${data}/mqdefault.jpg`}
          />
          <FontAwesomeIcon icon={faPlay} />
       </div>

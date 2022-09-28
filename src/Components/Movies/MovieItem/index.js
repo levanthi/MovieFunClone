@@ -9,19 +9,19 @@ const cx = classNames.bind(styles);
 function MovieItem({ data, list, className }) {
    return list ? (
       <div className={cx('movie-item', 'view-list')}>
-         <Link to={''}>
+         <Link to={`/tv/${data._id}`}>
             <img alt="thumbnail" src={data.thumbnail} />
          </Link>
          <div className={cx('content')}>
             <div className={cx('group')}>
-               <Link to="" className={cx('name')}>
+               <Link to={`/tv/${data._id}`} className={cx('name')}>
                   {data.name}
                </Link>
                <span className={cx('duration')}>{data.duration}</span>
             </div>
             <div className={cx('group')}>
-               <Link to={''} className={cx('raw-name')}>
-                  {data.rawName}
+               <Link to={`/tv/${data._id}`} className={cx('sub-name')}>
+                  {data.subName}
                </Link>
                <Link to="" className={cx('country')}>
                   {data.country}
@@ -47,14 +47,14 @@ function MovieItem({ data, list, className }) {
       </div>
    ) : (
       <div className={cx('movie-item', 'col', className || 'l-2-4')}>
-         <Link to="">
+         <Link to={`/tv/${data._id}`}>
             <img alt="thumbnail" src={data.thumbnail} />
          </Link>
-         <Link to="" className={cx('name')}>
+         <Link to={`/tv/${data._id}`} className={cx('name')}>
             {data.name}
          </Link>
-         <Link to="" className={cx('raw-name')}>
-            {data.rawName}
+         <Link to={`/tv/${data._id}`} className={cx('sub-name')}>
+            {data.subName}
          </Link>
       </div>
    );

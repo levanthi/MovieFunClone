@@ -16,8 +16,16 @@
       color: #dbdbdb;
       margin: 4px 0 5px;
    }
-   .raw-name {
+   .sub-name {
       color: #7a7a7a;
+   }
+   .name,
+   .sub-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
    }
 }
 
@@ -45,7 +53,7 @@
          .duration {
             color: #b5b5b5;
          }
-         .raw-name,
+         .sub-name,
          .country {
             &:hover {
                text-decoration: underline;
