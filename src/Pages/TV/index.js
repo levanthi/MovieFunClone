@@ -46,7 +46,7 @@ function TV() {
 
                <h3 className={cx('sub-title')}>
                   {data.subName} (
-                  <Link to={`/year/${data.year}`}>{data.year}</Link>)
+                  <Link to={`/filter/year/${data.year}`}>{data.year}</Link>)
                </h3>
 
                <div className={cx('duration')}>
@@ -86,7 +86,7 @@ function TV() {
                            <Button
                               key={genre.value}
                               genre
-                              to={`/genre/${genre.value}`}
+                              to={`/filter/genres/${genre.value}`}
                            >
                               {genre.name}
                            </Button>
@@ -115,7 +115,7 @@ function TV() {
                   <div className={cx('item')}>
                      <span className={cx('title')}>Quốc gia</span>
                      <div className={cx('value')}>
-                        <Link to={`/country/${data.country?.value}`}>
+                        <Link to={`/filter/country/${data.country?.value}`}>
                            {data.country?.name}
                         </Link>
                      </div>

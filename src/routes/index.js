@@ -73,7 +73,7 @@ const publicRoutes = [
       component: Person,
    },
    {
-      path: '*',
+      path: '/filter/*',
       component: FilterPage,
    },
 ];

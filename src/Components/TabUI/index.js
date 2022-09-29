@@ -1,19 +1,17 @@
-import { useState, useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './tabUI.module.scss';
 import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-const tabData = [
-   { title: 'ngày', data: 'day' },
-   { title: 'tuần', data: 'week' },
-   { title: 'tháng', data: 'month' },
-];
-
-function TabUI() {
-   const [tabActive, setTabActive] = useState(0);
+function TabUI({ tabData = [], tabActive, setTabActive }) {
    const slideBarRef = useRef();
+
+   useEffect(() => {
+      slideBarRef.current.style.left = 160 * tabActive + 'px';
+   }, [tabActive]);
+
    const handleActiveChange = (index) => {
       if (tabActive !== index) {
          setTabActive(index);

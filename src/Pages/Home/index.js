@@ -18,11 +18,11 @@ function Home() {
          setNominated(res.data);
       });
 
-      axios.get('/movie/show/home').then((res) => {
+      axios.get('/movie/home/show').then((res) => {
          setShow(res.data);
       });
 
-      axios.get('/movie/movie/home').then((res) => {
+      axios.get('/movie/home/movie').then((res) => {
          setMovie(res.data);
       });
    }, []);

@@ -23,24 +23,31 @@ function MovieItem({ data, list, className }) {
                <Link to={`/tv/${data._id}`} className={cx('sub-name')}>
                   {data.subName}
                </Link>
-               <Link to="" className={cx('country')}>
-                  {data.country}
+               <Link
+                  to={`/filter/country/${data.country?.value}`}
+                  className={cx('country')}
+               >
+                  {data.country?.name}
                </Link>
             </div>
             <p>{data.description}</p>
             <div className={cx('group')}>
                <div className={cx('genres')}>
-                  {data.genres.map((genre) => {
+                  {data.genres?.map((genre) => {
                      return (
-                        <Button key={genre} to={'/ss'} genreListView>
-                           {genre}
+                        <Button
+                           key={genre.value}
+                           to={`/filter/genres/${genre.value}`}
+                           genreListView
+                        >
+                           {genre.name}
                         </Button>
                      );
                   })}
                </div>
                <div className={cx('rating-wrap')}>
                   <img src={images.IMDB} alt="imdb" />
-                  <span className={cx('rating')}>{data.rating}</span>
+                  <span className={cx('rating')}>{data.IMDB}</span>
                </div>
             </div>
          </div>

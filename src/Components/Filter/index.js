@@ -1,10 +1,11 @@
 import classnames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import styles from './filter.module.scss';
 import { images } from '../../assets/images';
+import axios from '../Axios';
 
 const cx = classnames.bind(styles);
 
@@ -16,7 +17,7 @@ const filterList = [
       name: 'type',
    },
    {
-      name: 'genre',
+      name: 'genres',
       title: 'Thể loại',
       data: [
          'Âm nhạc',
@@ -248,34 +249,54 @@ const filterList = [
    },
 ];
 
-function Filter({ view, setViewList }) {
+function Filter({ view, setViewList, filterObj = {}, setFilterObj }) {
    const viewRef = useRef();
-   const [filterObj, setFilterObj] = useState({
-      type: '',
-      genre: '',
-      country: '',
-      year: '',
-      duration: '',
-      sort: 'publishDate',
-   });
    const [filterListState, setFilterList] = useState(filterList);
    const location = useLocation();
+   const navigate = useNavigate();
+
+   //when navigate from home page -> filter page
    useEffect(() => {
-      //type = movie is not have duration filter
-      if (location?.pathname === '/type/show') {
+      const [page, key, value] = location.pathname.slice(1).split('/');
+      if (key && value) {
+         setFilterObj({ ...filterObj, [key]: value });
+      }
+   }, [location.pathname]);
+
+   //type === show is not have duration
+   useEffect(() => {
+      if (filterObj.type === 'show') {
          let newFilterList = filterListState.filter(
             (filter) => filter.name !== 'duration',
          );
          setFilterList(newFilterList);
+         let newFilterObj = filterObj;
+         delete newFilterObj['duration'];
       } else {
          setFilterList(filterList);
       }
-   }, [location]);
-   const handleFilter = (e) => {
-      // const newFilterObj = { ...filterObj, [e.target.name]: e.target.value };
-      //call API and handle data at here
+   }, [filterObj.type]);
 
-      setFilterObj((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+   const handleFilter = (e) => {
+      if (location.pathname === '/') {
+         navigate(`/filter/${e.target.name}/${e.target.value}`);
+      }
+
+      let newFilterObj = { ...filterObj };
+
+      //only type===movie has duration
+      if (e.target.name === 'duration') {
+         newFilterObj.type = 'movie';
+      }
+
+      //delete field empty
+      if (e.target.value === '') {
+         delete newFilterObj[e.target.name];
+      } else {
+         newFilterObj = { ...newFilterObj, [e.target.name]: e.target.value };
+      }
+
+      setFilterObj(newFilterObj);
    };
    const viewChange = () => {
       if (viewRef.current.classList.contains('view-list')) {
@@ -286,41 +307,54 @@ function Filter({ view, setViewList }) {
       setViewList((pre) => !pre);
    };
    return (
-      <div className={cx('filter')}>
-         {filterListState.map((filter, index) => {
-            return (
-               <div key={index} className={cx('filter-item')}>
-                  <h4 className={cx('title')}>{filter.title}:</h4>
-                  <div className={cx('select-wrap')}>
-                     <span className={cx('arrow-down')}></span>
-                     <select
-                        name={filter.name}
-                        onChange={handleFilter}
-                        className={cx('select')}
-                     >
-                        {filter.default || <option selected>- Tất cả -</option>}
-                        {filter.data.map((option, index) => {
-                           return (
-                              <option key={index} value={filter.value[index]}>
-                                 {option}
+      <>
+         <div className={cx('filter')}>
+            {filterListState.map((filter, index) => {
+               return (
+                  <div key={index} className={cx('filter-item')}>
+                     <h4 className={cx('title')}>{filter.title}:</h4>
+                     <div className={cx('select-wrap')}>
+                        <span className={cx('arrow-down')}></span>
+                        <select
+                           name={filter.name}
+                           onChange={handleFilter}
+                           className={cx('select')}
+                        >
+                           {filter.default || (
+                              <option value="" selected>
+                                 - Tất cả -
                               </option>
-                           );
-                        })}
-                     </select>
+                           )}
+                           {filter.data.map((option, index) => {
+                              return (
+                                 <option
+                                    selected={
+                                       filter.value[index] ===
+                                       filterObj[filter.name]
+                                    }
+                                    key={index}
+                                    value={filter.value[index]}
+                                 >
+                                    {option}
+                                 </option>
+                              );
+                           })}
+                        </select>
+                     </div>
+                  </div>
+               );
+            })}
+            {view && (
+               <div className={cx('view-toggle')}>
+                  <h4 className={cx('title')}>Hiển thị:</h4>
+                  <div ref={viewRef} className="view-list">
+                     <FontAwesomeIcon onClick={viewChange} icon={faListUl} />
+                     <img onClick={viewChange} src={images.grid} alt="grid" />
                   </div>
                </div>
-            );
-         })}
-         {view && (
-            <div className={cx('view-toggle')}>
-               <h4 className={cx('title')}>Hiển thị:</h4>
-               <div ref={viewRef} className="view-list">
-                  <FontAwesomeIcon onClick={viewChange} icon={faListUl} />
-                  <img onClick={viewChange} src={images.grid} alt="grid" />
-               </div>
-            </div>
-         )}
-      </div>
+            )}
+         </div>
+      </>
    );
 }
 
