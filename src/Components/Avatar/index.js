@@ -16,7 +16,7 @@ function Avatar({ data }) {
                }}
             ></div>
          </Link>
-         <Link className={cx('name')} to={''}>
+         <Link className={cx('name')} to={`/person/${data._id}`}>
             {data.name}
          </Link>
       </div>

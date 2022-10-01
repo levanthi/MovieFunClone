@@ -4,11 +4,10 @@ import styles from './searchInput.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchInput() {
-   const [search, setSearch] = useState('');
+function SearchInput({ setInput, input }) {
    const searchRef = useRef();
    const handleSearchChange = (e) => {
-      setSearch(e.target.value);
+      setInput(e.target.value);
    };
    useEffect(() => {
       searchRef.current?.focus();
@@ -18,15 +17,15 @@ function SearchInput() {
          <input
             ref={searchRef}
             spellCheck={false}
-            value={search}
+            value={input}
             placeholder="Nhập tên phim..."
             onChange={handleSearchChange}
          />
-         {search && (
+         {input && (
             <div className={cx('search-by-google')}>
                Nếu không thấy phim cần tìm, hãy thử{' '}
                <a
-                  href={`https://www.google.com/search?q=${search}%20site%3Axemphim.fun`}
+                  href={`https://www.google.com/search?q=${input}%20site%3Axemphim.fun`}
                   target={'_blank'}
                   rel="noreferrer"
                >

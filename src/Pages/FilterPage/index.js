@@ -20,7 +20,6 @@ function FilterPage() {
          setData(res.data);
       });
    }, [filterObj]);
-   console.log(data);
    return (
       <div className={cx('filter-page') + ' container'}>
          <h1 className={cx('title')}>Phim lẻ</h1>

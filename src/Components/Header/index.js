@@ -23,7 +23,7 @@ function Header() {
    const headerRef = useRef();
    useEffect(() => {
       window.addEventListener('scroll', () => {
-         if (window.scrollY >= 100) {
+         if (window.scrollY >= 65) {
             headerRef.current?.classList.add(cx('background'));
          } else {
             headerRef.current?.classList.remove(cx('background'));

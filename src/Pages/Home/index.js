@@ -33,11 +33,11 @@ function Home() {
          <GroupOfFilm title="phim đề cử" />
          <MovieList movieList={nominated} />
 
-         <GroupOfFilm title="phim lẻ mới cập nhật" to={'/something'} />
-         <MovieList movieList={show} />
-
-         <GroupOfFilm title="phim bộ mới cập nhật" to={'/something1'} />
+         <GroupOfFilm title="phim lẻ mới cập nhật" to={'/filter/type/movie'} />
          <MovieList movieList={movie} />
+
+         <GroupOfFilm title="phim bộ mới cập nhật" to={'/filter/type/show'} />
+         <MovieList movieList={show} />
       </div>
    );
 }

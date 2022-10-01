@@ -25,7 +25,6 @@ function TV() {
          setData(res.data);
       });
    }, [location.pathname]);
-   console.log(data);
    return (
       <div className={cx('tv')}>
          <span
