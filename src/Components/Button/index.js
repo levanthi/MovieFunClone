@@ -4,7 +4,15 @@ import styles from './button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({ genreListView, className, to, href, children, ...rest }) {
+function Button({
+   genreListView,
+   className,
+   to,
+   href,
+   onClick,
+   children,
+   ...rest
+}) {
    let Comp = 'button';
    const props = {};
    if (to) {
@@ -21,6 +29,7 @@ function Button({ genreListView, className, to, href, children, ...rest }) {
             ...rest,
          })}
          {...props}
+         onClick={onClick}
       >
          {children}
       </Comp>

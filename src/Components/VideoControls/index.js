@@ -54,7 +54,7 @@ const subtitleLanguages = [
 
 const speedOptions = [2, 1.75, 1.5, 1.25, 1, 0.75, 0.5, 0.25];
 
-function VideoControls({ src }) {
+function VideoControls({ src = '' }) {
    const videoRef = useRef();
    const volumeRef = useRef();
    const currentTimeRef = useRef();
@@ -121,11 +121,16 @@ function VideoControls({ src }) {
       }
    };
    const handleTimeUpdate = () => {
-      currentTimeRef.current.innerHTML = convertTimer(
-         videoRef.current.currentTime,
-      );
-      processRef.current.lastChild.style.width =
-         (videoRef.current.currentTime / videoRef.current.duration) * 100 + '%';
+      if (currentTimeRef.current) {
+         currentTimeRef.current.innerHTML = convertTimer(
+            videoRef.current.currentTime,
+         );
+      }
+      if (processRef.current) {
+         processRef.current.lastChild.style.width =
+            (videoRef.current.currentTime / videoRef.current.duration) * 100 +
+            '%';
+      }
    };
    const handleSpeedChange = (e, value) => {
       e.target.parentElement.classList.add(cx('hidden'));
@@ -190,7 +195,7 @@ function VideoControls({ src }) {
             onTimeUpdate={handleTimeUpdate}
             ref={videoRef}
             src={src}
-            preload="auto"
+            // preload="auto"
          ></video>
          {!playing && <Play onClick={togglePlay} />}
          {isVideoLoaded && (
@@ -226,7 +231,7 @@ function VideoControls({ src }) {
                         />
                         <div className={cx('volume-power')}>
                            <input
-                              value={volume}
+                              value={volume || 0}
                               type="range"
                               min={0}
                               max={100}
