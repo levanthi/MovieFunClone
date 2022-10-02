@@ -47,7 +47,10 @@ function Watch() {
             </h1>
             <h4 className={cx('sub-name')}>
                {data.subName}(season {data.season}) (
-               <Link className="link" to={`/filter?year=${data.year}`}>
+               <Link
+                  className="link"
+                  to={`/filter?year=${data.year}&currentPage=1`}
+               >
                   {data.year}
                </Link>
                )
