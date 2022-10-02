@@ -34,7 +34,7 @@ function TV() {
          <div className={cx('row', 'body')}>
             <div className={cx('col l-3', 'tv-col')}>
                <img src={data.thumbnail} alt="thumbnail" />
-               <Button to={'/watch'} danger large>
+               <Button to={`/watch/${data._id}`} danger large>
                   <FontAwesomeIcon icon={faPlay} />
                   Xem phim
                </Button>
@@ -45,7 +45,7 @@ function TV() {
 
                <h3 className={cx('sub-title')}>
                   {data.subName} (
-                  <Link to={`/filter/year/${data.year}`}>{data.year}</Link>)
+                  <Link to={`/filter?year=${data.year}`}>{data.year}</Link>)
                </h3>
 
                <div className={cx('duration')}>

@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import styles from './filter.module.scss';
 import { images } from '../../assets/images';
-import axios from '../Axios';
 
 const cx = classnames.bind(styles);
 
@@ -249,55 +248,28 @@ const filterList = [
    },
 ];
 
-function Filter({ view, setViewList, filterObj = {}, setFilterObj }) {
-   const viewRef = useRef();
-   const [filterListState, setFilterList] = useState(filterList);
+function Filter({ view, setViewList, handleFilter }) {
    const location = useLocation();
    const navigate = useNavigate();
-
-   //when navigate from home page -> filter page
-   useEffect(() => {
-      const [page, key, value] = location.pathname.slice(1).split('/');
-      if (key && value) {
-         setFilterObj({ ...filterObj, [key]: value });
-      }
-   }, [location.pathname]);
+   const viewRef = useRef();
+   const [filterListState, setFilterList] = useState(filterList);
+   const [filterObj, setFilterObj] = useState(
+      Object.fromEntries(new URLSearchParams(location.search)),
+   );
 
    //type === show is not have duration
    useEffect(() => {
-      if (filterObj.type === 'show') {
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      if (params.type === 'show') {
          let newFilterList = filterListState.filter(
             (filter) => filter.name !== 'duration',
          );
          setFilterList(newFilterList);
-         let newFilterObj = filterObj;
-         delete newFilterObj['duration'];
+         setFilterObj(params);
       } else {
          setFilterList(filterList);
       }
-   }, [filterObj.type]);
-
-   const handleFilter = (e) => {
-      if (location.pathname === '/') {
-         navigate(`/filter/${e.target.name}/${e.target.value}`);
-      }
-
-      let newFilterObj = { ...filterObj };
-
-      //only type===movie has duration
-      if (e.target.name === 'duration') {
-         newFilterObj.type = 'movie';
-      }
-
-      //delete field empty
-      if (e.target.value === '') {
-         delete newFilterObj[e.target.name];
-      } else {
-         newFilterObj = { ...newFilterObj, [e.target.name]: e.target.value };
-      }
-
-      setFilterObj(newFilterObj);
-   };
+   }, [location.search]);
    const viewChange = () => {
       if (viewRef.current.classList.contains('view-list')) {
          viewRef.current.classList.remove('view-list');
@@ -317,7 +289,16 @@ function Filter({ view, setViewList, filterObj = {}, setFilterObj }) {
                         <span className={cx('arrow-down')}></span>
                         <select
                            name={filter.name}
-                           onChange={handleFilter}
+                           onChange={(e) => {
+                              if (location.pathname === '/') {
+                                 navigate({
+                                    pathname: '/filter',
+                                    search: `?${e.target.name}=${e.target.value}&currentPage=1`,
+                                 });
+                              } else {
+                                 handleFilter(e);
+                              }
+                           }}
                            className={cx('select')}
                         >
                            {filter.default || (

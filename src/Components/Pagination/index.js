@@ -45,89 +45,91 @@ function Pagination({ page, currentPage = 1, setCurrentPage }) {
          setCurrentPage((pre) => pre + 1);
          window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (data === -1 && currentPage > 1) {
-         window.scrollTo({ top: 0, behavior: 'smooth' });
          setCurrentPage((pre) => pre - 1);
-      } else if (data !== currentPage && data > 0 && data <= last) {
          window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (data !== currentPage && data > 0 && data <= last) {
          setCurrentPage(data);
+         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
    };
 
    return (
-      <div className={cx('pagination')}>
-         <div className={cx('page')}>
-            <Button
-               onClick={() => {
-                  handlePageChange(first);
-               }}
-               paginationActive={currentPage === first}
-               pagination
-            >
-               {first}
-            </Button>
-            {middle.map((btn, index) => {
-               let etc = <span className={cx('etc')}>...</span>;
-               let button = (
-                  <Button
-                     key={btn}
-                     paginationActive={currentPage === btn}
-                     pagination
-                     onClick={() => {
-                        handlePageChange(btn);
-                     }}
-                  >
-                     {btn}
-                  </Button>
-               );
-               if (index === 0 && btn >= 3) {
-                  return (
-                     <div className={cx('etc-wrap')} key={btn}>
-                        {etc}
-                        {button}
-                     </div>
-                  );
-               }
-               if (index === middle.length - 1 && btn < page - 1) {
-                  return (
-                     <div className={cx('etc-wrap')} key={btn}>
-                        {button}
-                        {etc}
-                     </div>
-                  );
-               }
-               return button;
-            })}
-            {page > 1 && (
+      page > 1 && (
+         <div className={cx('pagination')}>
+            <div className={cx('page')}>
                <Button
                   onClick={() => {
-                     handlePageChange(last);
+                     handlePageChange(first);
                   }}
-                  paginationActive={currentPage === last}
+                  paginationActive={currentPage === first}
                   pagination
                >
-                  {last}
+                  {first}
                </Button>
-            )}
+               {middle.map((btn, index) => {
+                  let etc = <span className={cx('etc')}>...</span>;
+                  let button = (
+                     <Button
+                        key={btn}
+                        paginationActive={currentPage === btn}
+                        pagination
+                        onClick={() => {
+                           handlePageChange(btn);
+                        }}
+                     >
+                        {btn}
+                     </Button>
+                  );
+                  if (index === 0 && btn >= 3) {
+                     return (
+                        <div className={cx('etc-wrap')} key={btn}>
+                           {etc}
+                           {button}
+                        </div>
+                     );
+                  }
+                  if (index === middle.length - 1 && btn < page - 1) {
+                     return (
+                        <div className={cx('etc-wrap')} key={btn}>
+                           {button}
+                           {etc}
+                        </div>
+                     );
+                  }
+                  return button;
+               })}
+               {page > 1 && (
+                  <Button
+                     onClick={() => {
+                        handlePageChange(last);
+                     }}
+                     paginationActive={currentPage === last}
+                     pagination
+                  >
+                     {last}
+                  </Button>
+               )}
+            </div>
+            <div className={cx('next-pre')}>
+               <Button
+                  onClick={() => {
+                     handlePageChange(-1);
+                  }}
+                  pagination
+               >
+                  Trang trước
+               </Button>
+               <Button
+                  onClick={() => {
+                     handlePageChange(0);
+                  }}
+                  pagination
+               >
+                  Trang sau
+               </Button>
+            </div>
          </div>
-         <div className={cx('next-pre')}>
-            <Button
-               onClick={() => {
-                  handlePageChange(-1);
-               }}
-               pagination
-            >
-               Trang trước
-            </Button>
-            <Button
-               onClick={() => {
-                  handlePageChange(0);
-               }}
-               pagination
-            >
-               Trang sau
-            </Button>
-         </div>
-      </div>
+      )
    );
 }
 
