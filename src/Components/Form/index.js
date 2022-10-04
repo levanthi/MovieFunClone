@@ -5,12 +5,12 @@ import { images } from '../../assets/images';
 
 const cx = classNames.bind(styles);
 
-function Form({ data }) {
+function Form({ data, handleSubmit }) {
    const isOr = !!data.otherMethods;
    return (
       <div className={cx('form')}>
          <h1 className={cx('title')}>{data.title}</h1>
-         <form>
+         <form onSubmit={handleSubmit}>
             {/* this is input fields */}
             {data.fields?.map((field) => {
                return (
@@ -19,7 +19,11 @@ function Form({ data }) {
                         spellCheck={false}
                         type={field.type}
                         placeholder={field.placeholder}
+                        value={field.value}
+                        onInput={field.onInput}
+                        onBlur={field.onBlur}
                      />
+                     <span className={cx('error')}></span>
                   </div>
                );
             })}

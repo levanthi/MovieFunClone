@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { TvLayout, WatchLayout } from '../Layouts';
+import { getUser } from '../redux/selector';
 import {
    Home,
    Search,
@@ -15,9 +17,9 @@ import {
    Upload,
    Person,
 } from '../Pages';
-const isLogin = false;
 
 const PrivateRoutes = ({ children }) => {
+   const isLogin = useSelector(getUser);
    if (isLogin) {
       return children;
    } else {
