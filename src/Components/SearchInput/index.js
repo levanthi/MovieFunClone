@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './searchInput.module.scss';
 
 const cx = classNames.bind(styles);

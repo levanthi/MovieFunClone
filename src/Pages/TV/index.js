@@ -1,30 +1,78 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
+import jwtDecode from 'jwt-decode';
+import { useDispatch, useSelector } from 'react-redux';
+
 import styles from './tv.module.scss';
 import Button from '../../Components/Button';
 import { images } from '../../assets/images';
 import Slide from '../../Components/Slide';
 import Avatar from '../../Components/Avatar';
 import TrailerThumbnail from '../../Components/TrailerThumbnail';
-import axios from '../../Components/Axios';
+import axiosBase from '../../Components/Axios';
+import axios from 'axios';
+import { getUser } from '../../redux/selector';
+import userSlice from '../../redux/userSlice';
+import { refreshToken } from '../../redux/API/authApi';
 
 const cx = classNames.bind(styles);
 
 function TV() {
    const location = useLocation();
+   const dispatch = useDispatch();
+   const user = useSelector(getUser);
    const [data, setData] = useState({});
+
+   const axiosJWT = axios.create({
+      baseURL: 'http://localhost:8080',
+   });
+   axiosJWT.interceptors.request.use(
+      async (config) => {
+         let date = new Date();
+         const decode = jwtDecode(user?.accessToken);
+         if (decode.exp < date.getTime() / 1000) {
+            const data = await refreshToken();
+            const refreshUser = { ...user, accessToken: data.accessToken };
+            document.cookie = `token=Bearer ${data.refreshToken}`;
+            dispatch(userSlice.actions.setUser(refreshUser));
+            config.headers = { authorization: `Bearer ${data.accessToken}` };
+         }
+         return config;
+      },
+      (err) => {
+         return Promise.reject(err);
+      },
+   );
+
+   const handleCollection = (id) => {
+      try {
+         axiosJWT
+            .post(
+               '/user/collection',
+               { _id: user._id, movieId: id },
+               {
+                  headers: { authorization: `Bearer ${user.accessToken}` },
+               },
+            )
+            .then((res) => {
+               console.log(res.data);
+            });
+      } catch (err) {}
+   };
+
    useEffect(() => {
       const movieId = location.pathname.slice(
          location.pathname.lastIndexOf('/') + 1,
       );
-      axios.get(`/movie/${movieId}`).then(async (res) => {
+      axiosBase.get(`/movie/${movieId}`).then(async (res) => {
          setData(res.data);
       });
    }, [location.pathname]);
+
    return (
       <div className={cx('tv')}>
          <span
@@ -77,7 +125,13 @@ function TV() {
                         <FontAwesomeIcon icon={faSquareFacebook} />
                         <span>Chia sẻ</span>
                      </Button>
-                     <Button collection medium>
+                     <Button
+                        onClick={() => {
+                           handleCollection(data._id);
+                        }}
+                        collection
+                        medium
+                     >
                         <FontAwesomeIcon icon={faPlus} />
                         <span>Bộ sưu tập</span>
                      </Button>

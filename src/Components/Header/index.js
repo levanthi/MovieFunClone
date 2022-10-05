@@ -11,13 +11,15 @@ import {
    faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
 import { getUser } from '../../redux/selector';
 import userSlice from '../../redux/userSlice';
 import styles from './header.module.scss';
 import Button from '../Button';
 import { images } from '../../assets/images';
-import axios from '../Axios';
+import { refreshToken } from '../../redux/API/authApi';
 
 const cx = classNames.bind(styles);
 
@@ -63,8 +65,30 @@ function Header() {
          onClick: handleLogout,
       },
    ];
+
+   const axiosJWT = axios.create({
+      baseURL: 'http://localhost:8080',
+   });
+   axiosJWT.interceptors.request.use(
+      async (config) => {
+         let date = new Date();
+         const decode = jwtDecode(user?.accessToken);
+         if (decode.exp < date.getTime() / 1000) {
+            const data = await refreshToken();
+            const refreshUser = { ...user, accessToken: data.accessToken };
+            document.cookie = `token=Bearer ${data.refreshToken}`;
+            dispatch(userSlice.actions.setUser(refreshUser));
+            config.headers = { authorization: `Bearer ${data.accessToken}` };
+         }
+         return config;
+      },
+      (err) => {
+         return Promise.reject(err);
+      },
+   );
+
    function handleLogout() {
-      axios
+      axiosJWT
          .get('/auth/logout', {
             headers: {
                Authorization: `Bearer ${user.accessToken}`,

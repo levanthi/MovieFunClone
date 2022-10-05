@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import classNames from 'classnames/bind';
 import { images } from '../../assets/images';
@@ -34,15 +33,15 @@ function PreArrow(props) {
    );
 }
 
-function compare(a, b) {
-   if (a.name < b.name) {
-      return -1;
-   }
-   if (a.name > b.name) {
-      return 1;
-   }
-   return 0;
-}
+// function compare(a, b) {
+//    if (a.name < b.name) {
+//       return -1;
+//    }
+//    if (a.name > b.name) {
+//       return 1;
+//    }
+//    return 0;
+// }
 
 function Slide({ data }) {
    const settings = {

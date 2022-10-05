@@ -1,35 +1,14 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
-import jwtDecode from 'jwt-decode';
+
 import { getUser } from '../../redux/selector';
-import { refreshToken } from '../../redux/API/authApi';
-import userSlice from '../../redux/userSlice';
 import styles from './profile.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Profile() {
    const user = useSelector(getUser);
-   const dispatch = useDispatch();
-   const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
-   axiosJWT.interceptors.request.use(
-      async (config) => {
-         let date = new Date();
-         const decode = jwtDecode(user?.accessToken);
-         if (decode.exp < date.getTime() / 1000) {
-            const data = await refreshToken(user);
-            const refreshUser = { ...user, accessToken: data.accessToken };
-            document.cookie = `token=Bearer ${data.refreshToken}`;
-            dispatch(userSlice.actions.setUser(refreshUser));
-         }
-         return config;
-      },
-      (err) => {
-         return Promise.reject(err);
-      },
-   );
+
    const date = new Date(user.createdAt);
    return (
       <div className={cx('profile')}>

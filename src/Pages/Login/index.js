@@ -56,11 +56,17 @@ function Login() {
       e.preventDefault();
       if (userName.length >= 6 && password.length >= 6) {
          axios
-            .get('/auth/signIn', { params: { userName, password } })
+            .get('/auth/signIn', {
+               params: { userName, password },
+               headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+               },
+               withCredentials: 'include',
+            })
             .then((res) => {
-               const { user, refreshToken } = res.data;
+               const { user } = res.data;
                try {
-                  document.cookie = `token=Bearer ${refreshToken}`;
                   dispatch(userSlice.actions.setUser(user));
                   navigate('/');
                } catch (error) {}

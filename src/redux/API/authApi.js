@@ -1,8 +1,7 @@
 import axios from '../../Components/Axios';
 
-export async function refreshToken(user) {
-   const { accessToken, ...newUser } = user;
-   const res = axios.post('/auth/refresh-token', newUser, {
+export async function refreshToken() {
+   const res = axios.get('/auth/refresh-token', {
       withCredentials: true,
    });
    return (await res).data;

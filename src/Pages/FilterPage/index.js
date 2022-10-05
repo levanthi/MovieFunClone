@@ -39,7 +39,6 @@ function FilterPage() {
       }
 
       //CAll API
-      console.log('API');
       axios.get('/movie/filter', { params: params }).then((res) => {
          setData(res.data.data);
          setPageCount(res.data.pageCount);
