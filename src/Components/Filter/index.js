@@ -256,7 +256,6 @@ function Filter({ view, setViewList, handleFilter }) {
    const [filterObj, setFilterObj] = useState(
       Object.fromEntries(new URLSearchParams(location.search)),
    );
-
    //type === show is not have duration
    useEffect(() => {
       const params = Object.fromEntries(new URLSearchParams(location.search));
@@ -268,6 +267,7 @@ function Filter({ view, setViewList, handleFilter }) {
          setFilterObj(params);
       } else {
          setFilterList(filterList);
+         setFilterObj(params);
       }
    }, [location.search]);
    const viewChange = () => {

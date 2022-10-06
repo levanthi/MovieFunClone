@@ -26,9 +26,9 @@ const cx = classNames.bind(styles);
 const linkList = [
    { to: '/search', children: 'Tìm kiếm' },
    { to: '/top', children: 'Phim Hot' },
-   { to: '/filter/type/movie', children: 'Phim Lẻ' },
-   { to: '/filter/type/show', children: 'Phim Bộ' },
-   { to: '/filter/sort/updated', children: 'Phim Mới' },
+   { to: '/filter?type=movie&currentPage=1', children: 'Phim Lẻ' },
+   { to: '/filter?type=show&currentPage=1', children: 'Phim Bộ' },
+   { to: '/filter?=updated&currentPage=1', children: 'Phim Mới' },
    { to: '/faq', children: 'FAQ' },
 ];
 

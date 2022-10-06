@@ -59,7 +59,6 @@ function FilterPage() {
 
    return (
       <div className={cx('filter-page') + ' container'}>
-         <h1 className={cx('title')}>Phim lẻ</h1>
          <Filter setViewList={setViewList} handleFilter={handleFilter} view />
          <MovieList movieList={data} list={viewList} />
          <Pagination
