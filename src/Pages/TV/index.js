@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +6,7 @@ import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
 import jwtDecode from 'jwt-decode';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 
 import styles from './tv.module.scss';
 import Button from '../../Components/Button';
@@ -18,6 +19,7 @@ import axios from 'axios';
 import { getUser } from '../../redux/selector';
 import userSlice from '../../redux/userSlice';
 import { refreshToken } from '../../redux/API/authApi';
+import clientSlice from '../../redux/clientSlice';
 
 const cx = classNames.bind(styles);
 
@@ -59,7 +61,20 @@ function TV() {
                },
             )
             .then((res) => {
-               console.log(res.data);
+               const type = res.data.type;
+               const message = res.data.message;
+               const toastId = uuid();
+               const timerId = setTimeout(() => {
+                  dispatch(clientSlice.actions.removeToastMessage(toastId));
+               }, 3000);
+               dispatch(
+                  clientSlice.actions.addToastMessage({
+                     id: toastId,
+                     type,
+                     timerId,
+                     message,
+                  }),
+               );
             });
       } catch (err) {}
    };

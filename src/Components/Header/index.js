@@ -88,11 +88,11 @@ function Header() {
    );
 
    function handleLogout() {
-      axiosJWT
-         .get('/auth/logout', {
-            headers: {
-               Authorization: `Bearer ${user.accessToken}`,
-            },
+      axios
+         .get('http://localhost:8080/auth/logout', {
+            // headers: {
+            //    Authorization: `Bearer ${user.accessToken}`,
+            // },
             withCredentials: true,
          })
          .then((res) => {
