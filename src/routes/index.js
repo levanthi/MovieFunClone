@@ -16,6 +16,7 @@ import {
    Watch,
    Upload,
    Person,
+   Collection,
 } from '../Pages';
 
 const PrivateRoutes = ({ children }) => {
@@ -85,6 +86,10 @@ const privateRoutes = (() => {
       {
          path: '/profile',
          component: Profile,
+      },
+      {
+         path: '/collection',
+         component: Collection,
       },
    ];
 })();

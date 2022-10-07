@@ -51,7 +51,7 @@ function Header() {
       {
          name: 'Bộ sưu tập',
          icon: faFilm,
-         to: '/collection',
+         to: '/collection?page=1',
       },
 
       {
