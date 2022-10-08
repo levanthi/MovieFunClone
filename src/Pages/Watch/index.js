@@ -3,15 +3,20 @@ import classNames from 'classnames/bind';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
+import { useSelector } from 'react-redux';
 import styles from './watch.module.scss';
 import Button from '../../Components/Button';
 import VideoControls from '../../Components/VideoControls';
-import axios from '../../Components/Axios';
+import Axios from '../../Components/Axios';
+import { getUser } from '../../redux/selector';
+import Comments from '../../Components/Comments';
 
 const cx = classNames.bind(styles);
 
 function Watch() {
    const location = useLocation();
+   const user = useSelector(getUser);
+
    const [data, setData] = useState([]);
    const [currentEp, setCurrentEp] = useState(1);
 
@@ -23,8 +28,7 @@ function Watch() {
 
    useEffect(() => {
       const movieId = location.pathname.slice(7);
-      axios.get('/movie/watch', { params: { movieId } }).then((res) => {
-         console.log(res.data);
+      Axios.get('/movie/watch', { params: { movieId } }).then((res) => {
          setData(res.data);
       });
    }, []);
@@ -77,12 +81,16 @@ function Watch() {
                   );
                })}
             </div>
-            <div>
-               Để gửi bình luận phim, vui lòng{' '}
-               <Link className="link" to="/login">
-                  đăng nhập
-               </Link>
-            </div>
+            {user ? (
+               <Comments movieId={data._id} />
+            ) : (
+               <div>
+                  Để gửi bình luận phim, vui lòng{' '}
+                  <Link className="link" to="/login">
+                     đăng nhập
+                  </Link>
+               </div>
+            )}
          </div>
       </div>
    );
