@@ -98,7 +98,7 @@ function Comments({ movieId }) {
 
    useEffect(() => {
       // listen when comments is added
-      ws.addEventListener('message', (e) => {
+      const handleEventListener = function (e) {
          const res = JSON.parse(e.data);
          const { type, ...data } = res;
          if (type === 'addComment') {
@@ -108,7 +108,11 @@ function Comments({ movieId }) {
             setComments((pre) => pre.filter((p) => p._id !== res._id));
             setTotalCommentsCount((pre) => pre - 1);
          }
-      });
+      };
+      ws.addEventListener('message', handleEventListener);
+      return () => {
+         ws.removeEventListener('message', handleEventListener);
+      };
    }, []);
 
    useEffect(() => {
