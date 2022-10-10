@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-regular-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import socketIOClient from 'socket.io-client';
 import { v4 as uuid } from 'uuid';
 import styles from './comments.module.scss';
 import { getUser } from '../../redux/selector';
@@ -15,13 +16,14 @@ import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-const ws = new WebSocket('ws://localhost:9000');
 function Comments({ movieId }) {
    const dispatch = useDispatch();
 
    const [input, setInput] = useState('');
    const [comments, setComments] = useState([]);
    const [totalCommentsCount, setTotalCommentsCount] = useState(0);
+
+   const socketRef = useRef();
 
    const user = useSelector(getUser);
 
@@ -46,16 +48,26 @@ function Comments({ movieId }) {
 
    const handleSendComment = () => {
       if (input) {
-         setInput('');
-         ws.send(
-            JSON.stringify({
-               type: 'addComment',
-               username: user.name,
-               message: input,
-               movieId,
-               userId: user._id,
-            }),
-         );
+         const data = {
+            username: user.name,
+            message: input,
+            movieId,
+            userId: user._id,
+         };
+         axiosJWT
+            .post('/movie/comment', data, {
+               headers: { authorization: `Bearer ${user.accessToken}` },
+            })
+            .then((res) => {
+               setInput('');
+               socketRef.current.emit('sendDataClient', {
+                  room: movieId,
+                  data: {
+                     type: 'addComment',
+                     ...res.data.comment,
+                  },
+               });
+            });
       }
    };
 
@@ -74,46 +86,25 @@ function Comments({ movieId }) {
             setComments((pre) => {
                return [...pre, ...res.data.data];
             });
-            setTotalCommentsCount(res.data.totalCount[0].count);
+            setTotalCommentsCount(res.data.totalCount);
          });
    };
 
    const handleDeleteComment = (commentId) => {
       axiosJWT
          .delete('/movie/comment', {
-            params: { _id: commentId },
+            params: { _id: commentId, userId: user._id },
             headers: { authorization: `Bearer ${user.accessToken}` },
          })
          .then((res) => {
             if (res.status === 200) {
-               ws.send(
-                  JSON.stringify({
-                     type: 'deleteComment',
-                     _id: commentId,
-                  }),
-               );
+               socketRef.current.emit('sendDataClient', {
+                  room: movieId,
+                  data: { _id: commentId, type: 'deleteComment' },
+               });
             }
          });
    };
-
-   useEffect(() => {
-      // listen when comments is added
-      const handleEventListener = function (e) {
-         const res = JSON.parse(e.data);
-         const { type, ...data } = res;
-         if (type === 'addComment') {
-            setComments((pre) => [data, ...pre]);
-            setTotalCommentsCount((pre) => pre + 1);
-         } else if (type === 'deleteComment') {
-            setComments((pre) => pre.filter((p) => p._id !== res._id));
-            setTotalCommentsCount((pre) => pre - 1);
-         }
-      };
-      ws.addEventListener('message', handleEventListener);
-      return () => {
-         ws.removeEventListener('message', handleEventListener);
-      };
-   }, []);
 
    useEffect(() => {
       //API initial comments
@@ -128,8 +119,41 @@ function Comments({ movieId }) {
             .then((res) => {
                console.log(res.data);
                setComments(res.data.data);
-               setTotalCommentsCount(res.data?.totalCount[0]?.count || 0);
+               setTotalCommentsCount(res.data?.totalCount || 0);
             });
+      }
+
+      //connect to socketIO
+      if (movieId) {
+         //Connect to socketIO
+         socketRef.current = socketIOClient.connect('http://localhost:8080');
+         console.log(movieId);
+         //Subscribe room
+         socketRef.current.emit('subscribe', movieId);
+         //Receive data from socket server
+         socketRef.current.on('sendDataServer', (dataGot) => {
+            console.log(dataGot);
+            const { type, ...data } = dataGot;
+            switch (type) {
+               case 'addComment':
+                  setComments((pre) => [data, ...pre]);
+                  setTotalCommentsCount((pre) => pre + 1);
+                  break;
+               case 'deleteComment':
+                  setComments((pre) =>
+                     pre.filter((comment) => comment._id !== data._id),
+                  );
+                  setTotalCommentsCount((pre) => pre - 1);
+                  break;
+               default:
+                  break;
+            }
+         });
+
+         return () => {
+            //Unsubscribe room
+            socketRef.current.emit('unsubscribe', movieId);
+         };
       }
    }, [movieId]);
 
