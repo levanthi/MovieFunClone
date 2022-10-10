@@ -3,15 +3,16 @@ import { useSelector } from 'react-redux';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { DefaultLayout } from './Layouts';
 import { publicRoutes, privateRoutes, PrivateRoutes } from './routes';
-import { getOverlay } from './redux/selector';
 import Overlay from './Components/Overlay';
 import ToastMessage from './Components/ToastMessage';
-import { getToastMessage } from './redux/selector';
+import { getToastMessage, getOverlay, getLoading } from './redux/selector';
+import Loading from './Components/Loading';
 
 function App() {
    const location = useLocation();
    const toastMessage = useSelector(getToastMessage) || [];
    const showOverlay = useSelector(getOverlay);
+   const loading = useSelector(getLoading);
    useEffect(() => {
       window.scrollTo({ top: 0, behavior: 'auto' });
    }, [location?.pathname]);
@@ -28,6 +29,7 @@ function App() {
             );
          })}
          {showOverlay && <Overlay />}
+         {loading && <Loading />}
          <Routes>
             {privateRoutes.map((route, index) => {
                let Layout = DefaultLayout;

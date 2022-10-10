@@ -8,6 +8,7 @@ import axios from 'axios';
 import { refreshToken } from '../../redux/API/authApi';
 import { getUser } from '../../redux/selector';
 import userSlice from '../../redux/userSlice';
+import clientSlice from '../../redux/clientSlice';
 
 function Collection() {
    const location = useLocation();
@@ -52,6 +53,7 @@ function Collection() {
       }
 
       //API
+      dispatch(clientSlice.actions.startLoading());
       axiosJWT
          .get('/user/collection', {
             params: {
@@ -64,6 +66,7 @@ function Collection() {
          .then((res) => {
             setMovies(res.data.collections);
             setPageCount(res.data.page);
+            dispatch(clientSlice.actions.endLoading());
          });
    }, [location.search]);
 

@@ -66,10 +66,8 @@ function Login() {
             })
             .then((res) => {
                const { user } = res.data;
-               try {
-                  dispatch(userSlice.actions.setUser(user));
-                  navigate('/');
-               } catch (error) {}
+               dispatch(userSlice.actions.setUser(user));
+               navigate('/');
             });
       }
    };

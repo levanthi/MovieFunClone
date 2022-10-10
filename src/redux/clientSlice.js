@@ -6,8 +6,17 @@ const clientSlice = createSlice({
       overlay: false,
       trailer: '',
       toastMessage: [],
+      loading: false,
    },
    reducers: {
+      startLoading: (state) => {
+         state.loading = true;
+         return state;
+      },
+      endLoading: (state) => {
+         state.loading = false;
+         return state;
+      },
       toggleOverlay: (state) => {
          state.overlay = !state.overlay;
          return state;

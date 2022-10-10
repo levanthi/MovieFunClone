@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
@@ -6,12 +7,14 @@ import Filter from '../../Components/Filter';
 import MovieList from '../../Components/Movies/MovieList';
 import Pagination from '../../Components/Pagination';
 import axios from '../../Components/Axios';
+import clientSlice from '../../redux/clientSlice';
 
 const cx = classNames.bind(styles);
 
 function FilterPage() {
    const navigate = useNavigate();
    const location = useLocation();
+   const dispatch = useDispatch();
    const [pageCount, setPageCount] = useState(1);
    const [viewList, setViewList] = useState(false);
    const [currentPage, setCurrentPage] = useState(1);
@@ -39,9 +42,11 @@ function FilterPage() {
       }
 
       //CAll API
+      dispatch(clientSlice.actions.startLoading());
       axios.get('/movie/filter', { params: params }).then((res) => {
          setData(res.data.data);
          setPageCount(res.data.pageCount);
+         dispatch(clientSlice.actions.endLoading());
       });
    }, [location.search]);
 
