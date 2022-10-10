@@ -11,6 +11,7 @@ import { v4 as uuid } from 'uuid';
 import styles from './comments.module.scss';
 import { getUser } from '../../redux/selector';
 import userSlice from '../../redux/userSlice';
+import clientSlice from '../../redux/clientSlice';
 import { refreshToken } from '../../redux/API/authApi';
 import Button from '../Button';
 
@@ -102,7 +103,23 @@ function Comments({ movieId }) {
                   room: movieId,
                   data: { _id: commentId, type: 'deleteComment' },
                });
+               dispatch(
+                  clientSlice.actions.addToastMessage({
+                     type: 'success',
+                     message: 'Xóa bình luận thành công.',
+                     id: uuid(),
+                  }),
+               );
             }
+         })
+         .catch(() => {
+            dispatch(
+               clientSlice.actions.addToastMessage({
+                  type: 'error',
+                  message: 'Xóa bình luận thất bại.',
+                  id: uuid(),
+               }),
+            );
          });
    };
 

@@ -23,7 +23,6 @@ function App() {
                   key={toast.id}
                   id={toast.id}
                   type={toast.type}
-                  timerId={toast.timerId}
                   message={toast.message}
                />
             );

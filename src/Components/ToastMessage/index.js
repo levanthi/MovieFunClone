@@ -5,14 +5,17 @@ import {
    faCircleInfo,
    faCircleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
+import { v4 as uuid } from 'uuid';
 import { useDispatch } from 'react-redux';
 import styles from './toastMessage.module.scss';
 import clientSlice from '../../redux/clientSlice';
+import { useEffect, useRef } from 'react';
 
 const cx = classNames.bind(styles);
 
-function ToastMessage({ type, id, timerId, message }) {
+function ToastMessage({ type, id, message }) {
    const dispatch = useDispatch();
+   const timerIdRef = useRef();
    let icon = faCircleCheck,
       success,
       info,
@@ -38,8 +41,15 @@ function ToastMessage({ type, id, timerId, message }) {
       default:
    }
 
+   useEffect(() => {
+      timerIdRef.current = setTimeout(() => {
+         console.log(id);
+         dispatch(clientSlice.actions.removeToastMessage(id));
+      }, 3000);
+   }, []);
+
    const handleClose = (e) => {
-      clearTimeout(timerId);
+      clearTimeout(timerIdRef.current);
       e.target.parentElement.classList.remove('slide-down');
       e.target.parentElement.classList.add('slide-up');
       setTimeout(() => {

@@ -63,16 +63,11 @@ function TV() {
             .then((res) => {
                const type = res.data.type;
                const message = res.data.message;
-               const toastId = uuid();
-               const timerId = setTimeout(() => {
-                  dispatch(clientSlice.actions.removeToastMessage(toastId));
-               }, 3000);
                dispatch(
                   clientSlice.actions.addToastMessage({
-                     id: toastId,
                      type,
-                     timerId,
                      message,
+                     id: uuid(),
                   }),
                );
             });
