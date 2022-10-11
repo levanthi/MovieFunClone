@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 import Form from '../../Components/Form';
 import axios from '../../Components/Axios';
 import userSlice from '../../redux/userSlice';
+import clientSlice from '../../redux/clientSlice';
 
 function Login() {
    const dispatch = useDispatch();
@@ -68,6 +70,15 @@ function Login() {
                const { user } = res.data;
                dispatch(userSlice.actions.setUser(user));
                navigate('/');
+            })
+            .catch((err) => {
+               dispatch(
+                  clientSlice.actions.addToastMessage({
+                     type: err.response.data.type,
+                     message: err.response.data.message,
+                     id: uuid(),
+                  }),
+               );
             });
       }
    };

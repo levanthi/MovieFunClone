@@ -43,7 +43,6 @@ function ToastMessage({ type, id, message }) {
 
    useEffect(() => {
       timerIdRef.current = setTimeout(() => {
-         console.log(id);
          dispatch(clientSlice.actions.removeToastMessage(id));
       }, 3000);
    }, []);

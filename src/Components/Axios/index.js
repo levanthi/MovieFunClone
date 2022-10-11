@@ -1,11 +1,14 @@
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+
+const url = 'http://localhost:8080';
 
 const instance = axios.create({
-   baseURL: 'http://localhost:8080',
+   baseURL: url,
 });
 
-// const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
+const axiosJWT = axios.create({ baseURL: url });
+
+// const axiosJWT = axios.create({ baseURL: url });
 // axiosJWT.interceptors.request.use(
 //    async (config) => {
 //       let date = new Date();
@@ -23,6 +26,6 @@ const instance = axios.create({
 //    },
 // );
 
-// export { axiosJWT };
+export { axiosJWT };
 
 export default instance;
