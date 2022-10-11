@@ -14,7 +14,6 @@ import userSlice from '../../redux/userSlice';
 import { refreshToken } from '../../redux/API/authApi';
 
 const cx = classNames.bind(styles);
-const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
 
 function Profile() {
    const dispatch = useDispatch();
@@ -26,25 +25,24 @@ function Profile() {
    const [retypeNewPassword, setRetypeNewPassword] = useState('');
    const [password, setPassword] = useState('');
 
-   useEffect(() => {
-      axiosJWT.interceptors.request.use(
-         async (config) => {
-            let date = new Date();
-            const decode = jwtDecode(user?.accessToken);
-            if (decode.exp < date.getTime() / 1000) {
-               const data = await refreshToken();
-               const refreshUser = { ...user, accessToken: data.accessToken };
-               document.cookie = `token=Bearer ${data.refreshToken}`;
-               dispatch(userSlice.actions.setUser(refreshUser));
-               config.headers = { authorization: `Bearer ${data.accessToken}` };
-            }
-            return config;
-         },
-         (err) => {
-            return Promise.reject(err);
-         },
-      );
-   }, []);
+   const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
+   axiosJWT.interceptors.request.use(
+      async (config) => {
+         let date = new Date();
+         const decode = jwtDecode(user?.accessToken);
+         if (decode.exp < date.getTime() / 1000) {
+            const data = await refreshToken();
+            const refreshUser = { ...user, accessToken: data.accessToken };
+            document.cookie = `token=Bearer ${data.refreshToken}`;
+            dispatch(userSlice.actions.setUser(refreshUser));
+            config.headers = { authorization: `Bearer ${data.accessToken}` };
+         }
+         return config;
+      },
+      (err) => {
+         return Promise.reject(err);
+      },
+   );
 
    const handleTogglePassword = () => {
       setChangePassword((pre) => !pre);
