@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';

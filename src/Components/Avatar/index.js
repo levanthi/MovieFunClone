@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './avatar.module.scss';
 

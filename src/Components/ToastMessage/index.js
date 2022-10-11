@@ -5,7 +5,6 @@ import {
    faCircleInfo,
    faCircleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
-import { v4 as uuid } from 'uuid';
 import { useDispatch } from 'react-redux';
 import styles from './toastMessage.module.scss';
 import clientSlice from '../../redux/clientSlice';
