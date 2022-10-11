@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
 import jwtDecode from 'jwt-decode';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,26 +52,48 @@ function TV() {
    );
 
    const handleCollection = (id) => {
+      const isCollected = data.isCollected;
       try {
-         axiosJWT
-            .post(
-               '/user/collection',
-               { _id: user._id, movieId: id },
-               {
+         if (!isCollected) {
+            axiosJWT
+               .post(
+                  '/user/collection',
+                  { _id: user._id, movieId: id },
+                  {
+                     headers: { authorization: `Bearer ${user.accessToken}` },
+                  },
+               )
+               .then((res) => {
+                  const type = res.data.type;
+                  const message = res.data.message;
+                  setData((pre) => ({ ...pre, isCollected: true }));
+                  dispatch(
+                     clientSlice.actions.addToastMessage({
+                        type,
+                        message,
+                        id: uuid(),
+                     }),
+                  );
+               });
+         } else {
+            axiosJWT
+               .delete('/user/collection', {
+                  params: { movieId: id },
                   headers: { authorization: `Bearer ${user.accessToken}` },
-               },
-            )
-            .then((res) => {
-               const type = res.data.type;
-               const message = res.data.message;
-               dispatch(
-                  clientSlice.actions.addToastMessage({
-                     type,
-                     message,
-                     id: uuid(),
-                  }),
-               );
-            });
+               })
+               .then((res) => {
+                  const type = res.data.type;
+                  const message = res.data.message;
+                  setData((pre) => ({ ...pre, isCollected: false }));
+                  dispatch(
+                     clientSlice.actions.addToastMessage({
+                        type,
+                        message,
+                        id: uuid(),
+                     }),
+                  );
+               });
+         }
       } catch (err) {}
    };
 
@@ -79,9 +101,11 @@ function TV() {
       const movieId = location.pathname.slice(
          location.pathname.lastIndexOf('/') + 1,
       );
-      axiosBase.get(`/movie/${movieId}`).then(async (res) => {
-         setData(res.data);
-      });
+      axiosBase
+         .get(`/movie/${movieId}`, { params: { userId: user._id } })
+         .then(async (res) => {
+            setData(res.data);
+         });
    }, [location.pathname]);
 
    return (
@@ -143,8 +167,12 @@ function TV() {
                         collection
                         medium
                      >
-                        <FontAwesomeIcon icon={faPlus} />
-                        <span>Bộ sưu tập</span>
+                        <FontAwesomeIcon
+                           icon={data.isCollected ? faTrash : faPlus}
+                        />
+                        <span>
+                           {data.isCollected ? 'Gỡ sưu tập' : 'Bộ sưu tập'}
+                        </span>
                      </Button>
                   </div>
                   <div className={cx('genres')}>
