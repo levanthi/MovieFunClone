@@ -102,7 +102,7 @@ function TV() {
          location.pathname.lastIndexOf('/') + 1,
       );
       axiosBase
-         .get(`/movie/${movieId}`, { params: { userId: user._id } })
+         .get(`/movie/${movieId}`, { params: { userId: user?._id } })
          .then(async (res) => {
             setData(res.data);
          });

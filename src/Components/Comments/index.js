@@ -134,7 +134,6 @@ function Comments({ movieId }) {
                },
             })
             .then((res) => {
-               console.log(res.data);
                setComments(res.data.data);
                setTotalCommentsCount(res.data?.totalCount || 0);
             });
@@ -144,7 +143,6 @@ function Comments({ movieId }) {
       if (movieId) {
          //Connect to socketIO
          socketRef.current = socketIOClient.connect('http://localhost:8080');
-         console.log(movieId);
          //Subscribe room
          socketRef.current.emit('subscribe', movieId);
          //Receive data from socket server
