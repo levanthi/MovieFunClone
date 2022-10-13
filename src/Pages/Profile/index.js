@@ -6,12 +6,12 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 
-import { getUser } from '../../redux/selector';
+import { getUser } from '~/redux/selector';
 import styles from './profile.module.scss';
-import Button from '../../Components/Button';
-import clientSlice from '../../redux/clientSlice';
-import userSlice from '../../redux/userSlice';
-import { refreshToken } from '../../redux/API/authApi';
+import Button from '~/Components/Button';
+import clientSlice from '~/redux/clientSlice';
+import userSlice from '~/redux/userSlice';
+import { refreshToken } from '~/redux/API/authApi';
 
 const cx = classNames.bind(styles);
 

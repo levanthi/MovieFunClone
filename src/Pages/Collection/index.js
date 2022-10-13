@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
-import MovieList from '../../Components/Movies/MovieList';
-import Pagination from '../../Components/Pagination';
+import MovieList from '~/Components/Movies/MovieList';
+import Pagination from '~/Components/Pagination';
 import axios from 'axios';
-import { refreshToken } from '../../redux/API/authApi';
-import { getUser } from '../../redux/selector';
-import userSlice from '../../redux/userSlice';
-import clientSlice from '../../redux/clientSlice';
+import { refreshToken } from '~/redux/API/authApi';
+import { getUser } from '~/redux/selector';
+import userSlice from '~/redux/userSlice';
+import clientSlice from '~/redux/clientSlice';
 
 function Collection() {
    const location = useLocation();

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Form from '../../Components/Form';
-import axios from '../../Components/Axios';
+import Form from '~/Components/Form';
+import axios from '~/Components/Axios';
 
 function Signup() {
    const navigate = useNavigate();
@@ -9,43 +9,6 @@ function Signup() {
    const [name, setName] = useState('');
    const [password, setPassword] = useState('');
 
-   //    return {
-   //       title: 'Đăng ký',
-   //       fields: [
-   //          {
-   //             type: 'text',
-   //             placeholder: 'Tên đăng nhập',
-   //             value: userName,
-   //             onInput: (e) => {
-   //                setUserName(e.target.value);
-   //             },
-   //          },
-   //          {
-   //             type: 'text',
-   //             placeholder: 'Tên bạn',
-   //             value: name,
-   //             onInput: (e) => {
-   //                setName(e.target.value);
-   //             },
-   //          },
-   //          {
-   //             type: 'password',
-   //             placeholder: 'Mật khẩu',
-   //             value: password,
-   //             onInput: (e) => {
-   //                setPassword(e.target.value);
-   //             },
-   //          },
-   //       ],
-   //       submit: { name: 'Đăng ký' },
-   //       tick: {
-   //          name: 'Đăng ký nhận thông báo về trang web',
-   //          description: 'Chúng tôi chỉ gửi những thông báo quan trọng',
-   //       },
-   //       otherMethods: [{ method: 'google', name: 'Đăng nhập với Google' }],
-   //       otherFeatures: [{ name: 'Đăng nhập', to: '/login' }],
-   //    };
-   // }, []);
    const data = {
       title: 'Đăng ký',
       fields: [

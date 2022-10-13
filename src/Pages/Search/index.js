@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import SearchInput from '../../Components/SearchInput';
-import MovieList from '../../Components/Movies/MovieList';
-import axios from '../../Components/Axios';
-import clientSelector from '../../redux/clientSlice';
+import SearchInput from '~/Components/SearchInput';
+import MovieList from '~/Components/Movies/MovieList';
+import axios from '~/Components/Axios';
+import clientSelector from '~/redux/clientSlice';
 
 function Search() {
    const dispatch = useDispatch();

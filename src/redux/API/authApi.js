@@ -1,4 +1,4 @@
-import axios from '../../Components/Axios';
+import axios from '~/Components/Axios';
 
 export async function refreshToken() {
    console.log('REFRESH TOKEN');

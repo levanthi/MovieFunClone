@@ -3,3 +3,4 @@ export const getTrailer = (state) => state.client.trailer;
 export const getToastMessage = (state) => state.client.toastMessage;
 export const getLoading = (state) => state.client.loading;
 export const getUser = (state) => state.user;
+export const getSub = (state) => state.client.sub;

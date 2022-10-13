@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useLocation } from 'react-router-dom';
-import axios from '../../Components/Axios';
+import axios from '~/Components/Axios';
 import styles from './person.module.scss';
-import MovieList from '../../Components/Movies/MovieList';
+import MovieList from '~/Components/Movies/MovieList';
 
 const cx = classNames.bind(styles);
 

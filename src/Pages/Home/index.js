@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
 import styles from './home.module.scss';
-import Filter from '../../Components/Filter';
-import MovieList from '../../Components/Movies/MovieList';
-import GroupOfFilm from '../../Components/GroupOfFilm';
-import axios from '../../Components/Axios';
-import clientSlice from '../../redux/clientSlice';
+import Filter from '~/Components/Filter';
+import MovieList from '~/Components/Movies/MovieList';
+import GroupOfFilm from '~/Components/GroupOfFilm';
+import axios from '~/Components/Axios';
+import clientSlice from '~/redux/clientSlice';
 
 const cx = classNames.bind(styles);
 

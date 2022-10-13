@@ -36,6 +36,7 @@ video::-webkit-media-controls {
    left: 0;
    right: 0;
    background-color: rgba($color: black, $alpha: 0.6);
+   transition: 0.4s all;
 }
 .process-wrap {
    position: absolute;
@@ -270,7 +271,12 @@ video::-webkit-media-controls {
    display: none !important;
 }
 .active {
-   background-color: white;
+   background-color: white !important;
    color: black;
    pointer-events: none;
+}
+::cue {
+   background-color: rgba($color: black, $alpha: 0.3);
+   font-size: 3.2rem;
+   line-height: 1.4;
 }

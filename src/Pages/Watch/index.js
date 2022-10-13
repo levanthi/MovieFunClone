@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
 import { useSelector } from 'react-redux';
 import styles from './watch.module.scss';
-import Button from '../../Components/Button';
-import VideoControls from '../../Components/VideoControls';
-import Axios from '../../Components/Axios';
-import { getUser } from '../../redux/selector';
-import Comments from '../../Components/Comments';
+import Button from '~/Components/Button';
+import VideoControls from '~/Components/VideoControls';
+import Axios from '~/Components/Axios';
+import { getUser } from '~/redux/selector';
+import Comments from '~/Components/Comments';
 
 const cx = classNames.bind(styles);
 
@@ -30,13 +30,16 @@ function Watch() {
       const movieId = location.pathname.slice(7);
       Axios.get('/movie/watch', { params: { movieId } }).then((res) => {
          setData(res.data);
+         console.log(res.data);
       });
    }, []);
+
    return (
       <div>
          <div className={cx('watch')}>
             <VideoControls
-               src={data.episodes && data.episodes[currentEp - 1]}
+               src={data.episodes && data.episodes[currentEp - 1]?.url}
+               vtt={data.episodes && data.episodes[currentEp - 1]?.vtt}
             />
          </div>
          <div className={cx('body', 'container')}>

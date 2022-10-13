@@ -11,8 +11,11 @@ import {
    faRotateLeft,
    faRotateRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './videoControls.module.scss';
 import { images } from '../../assets/images';
+import clientSlice from '../../redux/clientSlice';
+import { getSub } from '../../redux/selector';
 
 const cx = className.bind(styles);
 
@@ -48,19 +51,23 @@ const convertTimer = (input) => {
    return result;
 };
 const subtitleLanguages = [
-   { name: 'Tiếng việt', key: 'VI' },
-   { name: 'Tiếng Anh', key: 'EN' },
+   { name: 'Tiếng việt', key: 'vi' },
+   { name: 'Tiếng Anh', key: 'en' },
 ];
 
 const speedOptions = [2, 1.75, 1.5, 1.25, 1, 0.75, 0.5, 0.25];
 
-function VideoControls({ src = '' }) {
+function VideoControls({ src = '', vtt = '' }) {
+   const dispatch = useDispatch();
+   const sub = useSelector(getSub);
    const videoRef = useRef();
+   const controlsRef = useRef();
    const volumeRef = useRef();
    const currentTimeRef = useRef();
    const volumeProcessRef = useRef();
    const processRef = useRef();
    const groupRef = useRef();
+   const controlsVisibleTimeout = useRef();
    const [isVideoLoaded, setLoaded] = useState(false);
    const [volume, setVolume] = useState(
       JSON.parse(localStorage.getItem('volume')),
@@ -70,7 +77,6 @@ function VideoControls({ src = '' }) {
       JSON.parse(localStorage.getItem('muted')),
    );
    const [speed, setSpeed] = useState(1);
-
    useEffect(() => {
       videoRef.current.addEventListener('loadeddata', () => {
          setLoaded(true);
@@ -159,6 +165,7 @@ function VideoControls({ src = '' }) {
       setTimeout(() => {
          e.target.parentElement.classList.remove(cx('hidden'));
       }, 50);
+      dispatch(clientSlice.actions.setSub(language.key));
    };
    const handleMuted = () => {
       if (Number(volume) > 0) {
@@ -188,18 +195,36 @@ function VideoControls({ src = '' }) {
             Number(processRef.current.offsetWidth),
       );
    };
+   const handleOverVideo = (e) => {
+      if (controlsRef.current) {
+         console.log('over');
+         clearTimeout(controlsVisibleTimeout.current);
+         controlsRef.current.style.visibility = 'visible';
+         controlsRef.current.style.opacity = 1;
+         videoRef.current.style.cursor = 'default';
+
+         controlsVisibleTimeout.current = setTimeout(() => {
+            controlsRef.current.style.visibility = 'hidden';
+            controlsRef.current.style.opacity = 0;
+            videoRef.current.style.cursor = 'none';
+         }, 3000);
+      }
+   };
    return (
       <div ref={groupRef} className={cx('video-group')}>
          <video
             onClick={togglePlay}
+            onMouseMoveCapture={handleOverVideo}
             onTimeUpdate={handleTimeUpdate}
             ref={videoRef}
             src={src}
-            // preload="auto"
-         ></video>
+            crossOrigin="anonymous"
+         >
+            <track src={vtt[sub]} kind="subtitles" srcLang={sub} default />
+         </video>
          {!playing && <Play onClick={togglePlay} />}
          {isVideoLoaded && (
-            <div className={cx('controls-wrap')}>
+            <div ref={controlsRef} className={cx('controls-wrap')}>
                <div
                   ref={processRef}
                   className={cx('process-wrap')}
@@ -278,6 +303,9 @@ function VideoControls({ src = '' }) {
                                     onClick={(e) => {
                                        handleSubtitle(e, language);
                                     }}
+                                    className={cx({
+                                       active: language.key === sub,
+                                    })}
                                  >
                                     {language.name}
                                  </div>

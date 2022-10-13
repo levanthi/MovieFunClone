@@ -1,12 +1,12 @@
 import { Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { DefaultLayout } from './Layouts';
+import { DefaultLayout } from '~/Layouts';
 import { publicRoutes, privateRoutes, PrivateRoutes } from './routes';
-import Overlay from './Components/Overlay';
-import ToastMessage from './Components/ToastMessage';
+import Overlay from '~/Components/Overlay';
+import ToastMessage from '~/Components/ToastMessage';
 import { getToastMessage, getOverlay, getLoading } from './redux/selector';
-import Loading from './Components/Loading';
+import Loading from '~/Components/Loading';
 
 function App() {
    const location = useLocation();

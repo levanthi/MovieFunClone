@@ -7,6 +7,7 @@ const clientSlice = createSlice({
       trailer: '',
       toastMessage: [],
       loading: false,
+      sub: 'en',
    },
    reducers: {
       startLoading: (state) => {
@@ -40,6 +41,10 @@ const clientSlice = createSlice({
          state.toastMessage = state.toastMessage.filter((toast) => {
             return toast.id !== action.payload;
          });
+         return state;
+      },
+      setSub: (state, action) => {
+         state.sub = action.payload;
          return state;
       },
    },

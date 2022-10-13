@@ -9,17 +9,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 
 import styles from './tv.module.scss';
-import Button from '../../Components/Button';
-import { images } from '../../assets/images';
-import Slide from '../../Components/Slide';
-import Avatar from '../../Components/Avatar';
-import TrailerThumbnail from '../../Components/TrailerThumbnail';
-import axiosBase from '../../Components/Axios';
+import Button from '~/Components/Button';
+import { images } from '~/assets/images';
+import Slide from '~/Components/Slide';
+import Avatar from '~/Components/Avatar';
+import TrailerThumbnail from '~/Components/TrailerThumbnail';
+import axiosBase from '~/Components/Axios';
 import axios from 'axios';
-import { getUser } from '../../redux/selector';
-import userSlice from '../../redux/userSlice';
-import { refreshToken } from '../../redux/API/authApi';
-import clientSlice from '../../redux/clientSlice';
+import { getUser } from '~/redux/selector';
+import userSlice from '~/redux/userSlice';
+import { refreshToken } from '~/redux/API/authApi';
+import clientSlice from '~/redux/clientSlice';
 
 const cx = classNames.bind(styles);
 

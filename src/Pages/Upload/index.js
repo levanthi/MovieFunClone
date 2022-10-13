@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useRef, useState } from 'react';
-import axios from '../../Components/Axios';
+import axios from '~/Components/Axios';
 import styles from './upload.module.scss';
 
 const cx = classNames.bind(styles);

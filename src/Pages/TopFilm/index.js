@@ -2,10 +2,10 @@ import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import styles from './topFilm.module.scss';
-import TabUI from '../../Components/TabUI';
-import MovieList from '../../Components/Movies/MovieList';
-import axios from '../../Components/Axios';
-import clientSlice from '../../redux/clientSlice';
+import TabUI from '~/Components/TabUI';
+import MovieList from '~/Components/Movies/MovieList';
+import axios from '~/Components/Axios';
+import clientSlice from '~/redux/clientSlice';
 
 const cx = classNames.bind(styles);
 
