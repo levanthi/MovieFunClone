@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './filter.module.scss';
 import Filter from '~/Components/Filter';
@@ -19,23 +19,27 @@ function FilterPage() {
    const [viewList, setViewList] = useState(false);
    const [currentPage, setCurrentPage] = useState(1);
    const [data, setData] = useState([]);
+   const firstTime = useRef(true);
 
    useEffect(() => {
       const params = Object.fromEntries(new URLSearchParams(location.search));
 
       //normal flow ( pagination(1,2,3...) change )
-      if (currentPage !== Number(params.currentPage)) {
-         params.currentPage = currentPage;
-         navigate({
-            pathname: '/filter',
-            search: `?${new URLSearchParams(params).toString()}`,
-         });
+      if (firstTime.current) {
+         firstTime.current = false;
+      } else {
+         if (currentPage !== Number(params.currentPage)) {
+            params.currentPage = currentPage;
+            navigate({
+               pathname: '/filter',
+               search: `?${new URLSearchParams(params).toString()}`,
+            });
+         }
       }
    }, [currentPage]);
 
    useEffect(() => {
       const params = Object.fromEntries(new URLSearchParams(location.search));
-
       //backward page
       if (Number(params.currentPage) !== currentPage) {
          setCurrentPage(Number(params.currentPage));
