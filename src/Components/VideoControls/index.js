@@ -197,7 +197,6 @@ function VideoControls({ src = '', vtt = '' }) {
    };
    const handleOverVideo = (e) => {
       if (controlsRef.current) {
-         console.log('over');
          clearTimeout(controlsVisibleTimeout.current);
          controlsRef.current.style.visibility = 'visible';
          controlsRef.current.style.opacity = 1;

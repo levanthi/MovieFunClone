@@ -147,7 +147,6 @@ function Comments({ movieId }) {
          socketRef.current.emit('subscribe', movieId);
          //Receive data from socket server
          socketRef.current.on('sendDataServer', (dataGot) => {
-            console.log(dataGot);
             const { type, ...data } = dataGot;
             switch (type) {
                case 'addComment':
