@@ -24,6 +24,7 @@ function Person() {
                res.story || 'Chưa có thông tin tiểu sử của người này';
          });
    }, []);
+   console.log(person);
    return (
       <div className={cx('person', 'row', 'container')}>
          <div className={cx('l-3', 'left')}>
@@ -43,7 +44,7 @@ function Person() {
             <h3>Tiểu sử</h3>
             <p ref={storyRef}></p>
             <h3>Các phim đã tham gia</h3>
-            <MovieList className={'l-3'} />
+            <MovieList movieList={person.movieParticipated} className={'l-3'} />
             <h3>Ảnh</h3>
             <div className={cx('photo-group')}>
                {person.photos?.map((url) => {

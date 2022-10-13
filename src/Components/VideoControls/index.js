@@ -197,16 +197,18 @@ function VideoControls({ src = '', vtt = '' }) {
    };
    const handleOverVideo = (e) => {
       if (controlsRef.current) {
-         clearTimeout(controlsVisibleTimeout.current);
-         controlsRef.current.style.visibility = 'visible';
-         controlsRef.current.style.opacity = 1;
-         videoRef.current.style.cursor = 'default';
+         try {
+            clearTimeout(controlsVisibleTimeout.current);
+            controlsRef.current.style.visibility = 'visible';
+            controlsRef.current.style.opacity = 1;
+            videoRef.current.style.cursor = 'default';
 
-         controlsVisibleTimeout.current = setTimeout(() => {
-            controlsRef.current.style.visibility = 'hidden';
-            controlsRef.current.style.opacity = 0;
-            videoRef.current.style.cursor = 'none';
-         }, 3000);
+            controlsVisibleTimeout.current = setTimeout(() => {
+               controlsRef.current.style.visibility = 'hidden';
+               controlsRef.current.style.opacity = 0;
+               videoRef.current.style.cursor = 'none';
+            }, 3000);
+         } catch (err) {}
       }
    };
    return (

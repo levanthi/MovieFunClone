@@ -53,6 +53,15 @@ function TV() {
 
    const handleCollection = (id) => {
       const isCollected = data.isCollected;
+      if (!user) {
+         dispatch(
+            clientSlice.actions.addToastMessage({
+               type: 'error',
+               message: 'Vui lòng đăng nhập để sử dụng chức năng này',
+               id: uuid(),
+            }),
+         );
+      }
       try {
          if (!isCollected) {
             axiosJWT
@@ -245,22 +254,26 @@ function TV() {
                   />
                </div>
 
-               <div className={cx('season')}>
-                  <div className={cx('title')}>season</div>
-                  <div className={cx('body')}>
-                     <img src={data.thumbnail} alt="thumbnail" />
-                     <div className={cx('info')}>
-                        <Link to={location.pathname}>Phần {data.season}</Link>
-                        <p>
-                           {data.year} - {data.episodes?.length} tập
-                        </p>
-                        <p>
-                           Phần {data.season} của {data.name}&nbsp; được khởi
-                           chiếu vào ngày {data.premiere}
-                        </p>
+               {data.type === 'show' && (
+                  <div className={cx('season')}>
+                     <div className={cx('title')}>season</div>
+                     <div className={cx('body')}>
+                        <img src={data.thumbnail} alt="thumbnail" />
+                        <div className={cx('info')}>
+                           <Link to={location.pathname}>
+                              Phần {data.season}
+                           </Link>
+                           <p>
+                              {data.year} - {data.episodes?.length} tập
+                           </p>
+                           <p>
+                              Phần {data.season} của {data.name}&nbsp; được khởi
+                              chiếu vào ngày {data.premiere}
+                           </p>
+                        </div>
                      </div>
                   </div>
-               </div>
+               )}
             </div>
          </div>
       </div>
