@@ -97,3 +97,21 @@
    border-top: 1px solid hsla(0, 0%, 85.9%, 0.5);
    padding-top: 18px !important;
 }
+
+@media (min-width: 1400px) {
+   .movie-item {
+      flex: 20%;
+   }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+   .movie-item {
+      flex: 25%;
+   }
+}
+
+@media (min-width: 800px) and (max-width: 1199px) {
+   .movie-item {
+      flex: 33.33%;
+   }
+}

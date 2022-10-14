@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 function Form({ data, handleSubmit }) {
    const isOr = !!data.otherMethods;
    return (
-      <div className={cx('form')}>
+      <div className={cx('form', 'form-width')}>
          <h1 className={cx('title')}>{data.title}</h1>
          <form onSubmit={handleSubmit}>
             {/* this is input fields */}

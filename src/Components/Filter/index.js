@@ -280,10 +280,10 @@ function Filter({ view, setViewList, handleFilter }) {
    };
    return (
       <>
-         <div className={cx('filter')}>
+         <div className={cx('filter', 'row')}>
             {filterListState.map((filter, index) => {
                return (
-                  <div key={index} className={cx('filter-item')}>
+                  <div key={index} className={cx('filter-item', 'col', 'c-6')}>
                      <h4 className={cx('title')}>{filter.title}:</h4>
                      <div className={cx('select-wrap')}>
                         <span className={cx('arrow-down')}></span>

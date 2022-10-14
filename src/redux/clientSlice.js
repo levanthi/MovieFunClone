@@ -18,8 +18,12 @@ const clientSlice = createSlice({
          state.loading = false;
          return state;
       },
-      toggleOverlay: (state) => {
-         state.overlay = !state.overlay;
+      toggleOverlay: (state, action) => {
+         if (action.payload !== undefined) {
+            state.overlay = action.payload;
+         } else {
+            state.overlay = !state.overlay;
+         }
          return state;
       },
       setTrailer: (state, action) => {

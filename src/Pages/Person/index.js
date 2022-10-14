@@ -24,7 +24,6 @@ function Person() {
                res.story || 'Chưa có thông tin tiểu sử của người này';
          });
    }, []);
-   console.log(person);
    return (
       <div className={cx('person', 'row', 'container')}>
          <div className={cx('l-3', 'left')}>

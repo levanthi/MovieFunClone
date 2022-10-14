@@ -53,7 +53,7 @@ function MovieItem({ data, list, className }) {
          </div>
       </div>
    ) : (
-      <div className={cx('movie-item', 'col', className || 'l-2-4')}>
+      <div className={cx('movie-item', 'col', className || 'c-6')}>
          <Link to={`/tv/${data._id}`}>
             <img alt="thumbnail" src={data.thumbnail} />
          </Link>
