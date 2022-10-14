@@ -124,7 +124,7 @@ function TV() {
             style={{ backgroundImage: `url(${data.background})` }}
          ></span>
          <div className={cx('row', 'body')}>
-            <div className={cx('col l-3', 'tv-col')}>
+            <div className={cx('col l-3 m-3 c-12', 'tv-col')}>
                <img src={data.thumbnail} alt="thumbnail" />
                <Button to={`/watch/${data._id}`} danger large>
                   <FontAwesomeIcon icon={faPlay} />
@@ -132,7 +132,7 @@ function TV() {
                </Button>
             </div>
 
-            <div className={cx('col l-9', 'tv-col-2')}>
+            <div className={cx('col l-9 m-9 c-12', 'tv-col-2')}>
                <h1 className={cx('title')}>{data.name}</h1>
 
                <h3 className={cx('sub-title')}>
@@ -234,24 +234,57 @@ function TV() {
 
                <div className={cx('description')}>{data.description}</div>
 
-               <Slide
-                  data={{
-                     title: 'Diễn viên',
-                     Component: Avatar,
-                     data: data.actors,
-                  }}
-               />
-
-               <div className={'trailer'}>
+               {data.actors && (
                   <Slide
                      data={{
-                        title: 'trailer',
-                        Component: TrailerThumbnail,
-                        slidesToShow: 4,
-                        slidesToScroll: 4,
-                        data: data.trailers,
+                        title: 'Diễn viên',
+                        Component: Avatar,
+                        data: data.actors,
                      }}
+                     responsive={[
+                        {
+                           breakpoint: 1280,
+                           settings: {
+                              slidesToShow: 4,
+                              slidesToScroll: 4,
+                           },
+                        },
+                        {
+                           breakpoint: 560,
+                           settings: {
+                              slidesToShow: 3,
+                              slidesToScroll: 3,
+                           },
+                        },
+                     ]}
                   />
+               )}
+
+               <div className={'trailer'}>
+                  {data.trailers && (
+                     <Slide
+                        data={{
+                           title: 'trailer',
+                           Component: TrailerThumbnail,
+                           slidesToShow: 4,
+                           slidesToScroll: 4,
+                           data: data.trailers,
+                        }}
+                        responsive={[
+                           {
+                              breakpoint: 1280,
+                              settings: {
+                                 slidesToShow: 3,
+                                 slidesToScroll: 3,
+                              },
+                           },
+                           {
+                              breakpoint: 1100,
+                              settings: { slidesToShow: 2, slidesToScroll: 2 },
+                           },
+                        ]}
+                     />
+                  )}
                </div>
 
                {data.type === 'show' && (

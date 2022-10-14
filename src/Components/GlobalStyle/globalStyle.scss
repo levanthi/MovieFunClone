@@ -214,6 +214,9 @@ select {
    .form-width {
       width: 456px;
    }
+   * {
+      -webkit-tap-highlight-color: transparent;
+   }
 }
 
 @media (max-width: 800px) {
@@ -250,6 +253,9 @@ select {
    }
    .form-width {
       width: 100%;
+   }
+   * {
+      -webkit-tap-highlight-color: transparent;
    }
 }
 

@@ -11,6 +11,7 @@ import {
    faRightFromBracket,
    faSearch,
    faBars,
+   faCircleUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import jwtDecode from 'jwt-decode';
@@ -97,14 +98,12 @@ function Header() {
    function handleLogout() {
       axios
          .get('http://localhost:8080/auth/logout', {
-            // headers: {
-            //    Authorization: `Bearer ${user.accessToken}`,
-            // },
             withCredentials: true,
          })
          .then((res) => {
             if (res.status === 200) {
                dispatch(userSlice.actions.setUser(null));
+               dispatch(clientSlice.actions.toggleOverlay(false));
                navigate('/');
             }
          });
@@ -128,9 +127,7 @@ function Header() {
    useEffect(() => {
       if (showSidebar) {
          sidebarRef.current.style.transform = 'translateX(0)';
-         console.log('show');
       } else {
-         console.log('hidden');
          sidebarRef.current.style.transform = 'translateX(-100%)';
       }
    }, [showSidebar]);
@@ -157,6 +154,7 @@ function Header() {
             >
                <FontAwesomeIcon icon={faBars} />
             </div>
+
             <Link to={'/'} className={cx('brand', 'item')}>
                <img src={images.logo} alt="logo" />
             </Link>
@@ -178,7 +176,7 @@ function Header() {
 
                <div className={cx('end')}>
                   {user ? (
-                     <div className={cx('name-group')}>
+                     <div className={cx('name-group', 'c-0')}>
                         <div className={cx('name')}>{user.name}</div>
                         <div className={cx('drop-down')}>
                            {dropDowns.map((item, index) => {
@@ -214,14 +212,40 @@ function Header() {
                </div>
             </div>
          </div>
+
          <div ref={sidebarRef} className={cx('side-bar', 'l-0', 'm-0')}>
-            <Link to={'/login'}>
-               <Button medium primary>
-                  Đăng Nhập
-               </Button>
-            </Link>
-            <Link to={'/signup'}>Đăng Ký</Link>
-            <span></span>
+            {user ? (
+               <>
+                  <div>
+                     <FontAwesomeIcon icon={faCircleUser} />
+                     {user.name}
+                  </div>
+                  {dropDowns.map((item, index) => {
+                     return item.to ? (
+                        <Link key={index} to={item.to}>
+                           <FontAwesomeIcon icon={item.icon} />
+                           <span>{item.name}</span>
+                        </Link>
+                     ) : (
+                        <Button key={index} onClick={item.onClick}>
+                           <FontAwesomeIcon icon={item.icon} />
+                           <span>{item.name}</span>
+                        </Button>
+                     );
+                  })}
+               </>
+            ) : (
+               <>
+                  <Link to={'/login'} className={cx('mobile-login')}>
+                     <Button medium primary>
+                        Đăng Nhập
+                     </Button>
+                  </Link>
+                  <Link to={'/signup'}>Đăng Ký</Link>
+               </>
+            )}
+
+            <span className={cx('separate')}></span>
             <Link to={'/top'}>Phim Hot</Link>
             <Link to={'/filter?type=movie&currentPage=1'}>Phim lẻ</Link>
             <Link to={'/filter?type=show&currentPage=1'}>Phim Bộ</Link>

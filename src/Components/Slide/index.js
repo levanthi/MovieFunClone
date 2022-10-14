@@ -2,6 +2,7 @@ import Slider from 'react-slick';
 import classNames from 'classnames/bind';
 import { images } from '../../assets/images';
 import styles from './slide.module.scss';
+import { useEffect, useRef, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -22,8 +23,15 @@ function NextArrow(props) {
 // Prev Arrow Component
 function PreArrow(props) {
    const { onClick, style, className } = props;
+   const btnRef = useRef();
+   useEffect(() => {
+      setTimeout(() => {
+         btnRef.current.click();
+      }, 90);
+   }, []);
    return (
       <button
+         ref={btnRef}
          style={style}
          onClick={onClick}
          className={className + ' ' + cx('arrow', 'left')}
@@ -33,24 +41,15 @@ function PreArrow(props) {
    );
 }
 
-// function compare(a, b) {
-//    if (a.name < b.name) {
-//       return -1;
-//    }
-//    if (a.name > b.name) {
-//       return 1;
-//    }
-//    return 0;
-// }
-
-function Slide({ data }) {
+function Slide({ data, responsive = [] }) {
    const settings = {
-      infinite: false,
       slidesToShow: data.slidesToShow || 6,
       slidesToScroll: data.slidesToScroll || 6,
       nextArrow: <NextArrow />,
       prevArrow: <PreArrow />,
       speed: 800,
+      infinite: false,
+      responsive,
    };
    return (
       <div className={cx('slide')}>

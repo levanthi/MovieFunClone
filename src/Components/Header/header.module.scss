@@ -125,7 +125,7 @@
 }
 
 .side-bar {
-   width: 145px;
+   width: 200px;
    background-color: #0b1e30;
    position: fixed;
    z-index: 999999;
@@ -134,7 +134,7 @@
    bottom: 0;
    transform: translateX(-100%);
    transition: all 0.3s;
-   a {
+   > * {
       display: block;
       font-weight: 500;
       color: rgb(233, 233, 233);
@@ -142,19 +142,28 @@
          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
          sans-serif;
       padding: 16px;
+      width: 100%;
+      text-align: left;
+      background-color: transparent;
       &:hover {
          background-color: transparent;
          color: rgb(233, 233, 233);
       }
    }
-   > :first-child {
+   svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+   }
+   .mobile-login {
       padding-bottom: 0;
    }
-   span {
+   .separate {
       display: block;
       height: 1px;
       width: 100%;
-      background-color: rgb(59, 59, 59);
+      background-color: #36414b;
       margin: 2px 0;
+      padding: 0;
    }
 }
