@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
 import { useSelector } from 'react-redux';
@@ -10,11 +10,13 @@ import VideoControls from '~/Components/VideoControls';
 import Axios from '~/Components/Axios';
 import { getUser } from '~/redux/selector';
 import Comments from '~/Components/Comments';
+import { current } from '@reduxjs/toolkit';
 
 const cx = classNames.bind(styles);
 
 function Watch() {
    const location = useLocation();
+   const navigate = useNavigate();
    const user = useSelector(getUser);
 
    const [data, setData] = useState([]);
@@ -23,16 +25,25 @@ function Watch() {
    const handleEpChange = (ep) => {
       if (ep !== currentEp) {
          setCurrentEp(ep);
+         navigate(`/watch/${data._id}?ep=${ep}`);
       }
    };
 
    useEffect(() => {
       const movieId = location.pathname.slice(7);
       Axios.get('/movie/watch', { params: { movieId } }).then((res) => {
-         setData(res.data);
-         console.log(res.data);
+         setData({ ...res.data, episodes: [1, 2, 3, 4, 5, 6] });
+         console.log({ ...res.data, episodes: [1, 2, 3, 4, 5, 6] });
       });
    }, []);
+
+   useEffect(() => {
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      params.ep || (params.ep = 1);
+      if (params.ep !== currentEp) {
+         setCurrentEp(Number(params.ep));
+      }
+   }, [location.search]);
 
    return (
       <div>
