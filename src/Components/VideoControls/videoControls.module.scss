@@ -280,3 +280,43 @@ video::-webkit-media-controls {
    font-size: 3.2rem;
    line-height: 1.4;
 }
+
+@media (max-width: 799px) {
+   .controls {
+      svg,
+      img {
+         width: 16px !important;
+         height: 16px !important;
+      }
+   }
+   .pre-10,
+   .next-10 {
+      width: 32px;
+   }
+   .timer {
+      padding: 0;
+      font-size: 1.2rem;
+      span {
+         margin: 0 4px;
+      }
+   }
+   .volume-group {
+      &:hover {
+         .volume-power {
+            width: 50px;
+         }
+      }
+   }
+   .speed {
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+   }
+   .play {
+      width: 70px;
+      height: 70px;
+      top: 40%;
+   }
+}

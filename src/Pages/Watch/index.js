@@ -33,8 +33,7 @@ function Watch() {
    useEffect(() => {
       const movieId = location.pathname.slice(7);
       Axios.get('/movie/watch', { params: { movieId } }).then((res) => {
-         setData({ ...res.data, episodes: [1, 2, 3, 4, 5, 6] });
-         console.log({ ...res.data, episodes: [1, 2, 3, 4, 5, 6] });
+         setData(res.data);
       });
    }, []);
 
