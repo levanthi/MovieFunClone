@@ -207,7 +207,7 @@ function VideoControls({ src = '', vtt = '' }) {
                controlsRef.current.style.visibility = 'hidden';
                controlsRef.current.style.opacity = 0;
                videoRef.current.style.cursor = 'none';
-            }, 3000);
+            }, 7000);
          } catch (err) {}
       }
    };

@@ -319,4 +319,9 @@ video::-webkit-media-controls {
       height: 70px;
       top: 40%;
    }
+   ::cue {
+      background-color: rgba($color: black, $alpha: 0.3);
+      font-size: 1.6rem;
+      line-height: 1.4;
+   }
 }
