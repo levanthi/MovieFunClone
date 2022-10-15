@@ -26,6 +26,7 @@ function Watch() {
       if (ep !== currentEp) {
          setCurrentEp(ep);
          navigate(`/watch/${data._id}?ep=${ep}`);
+         window.scroll({ top: 0, behavior: 'smooth' });
       }
    };
 
