@@ -5,6 +5,9 @@
    padding: 12px 32px 12px 0;
    img {
       margin-bottom: 40px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
    }
    h3 {
       font-weight: 500;
@@ -40,5 +43,12 @@
       img {
          padding: 12px 24px;
       }
+   }
+}
+
+@media (max-width: 799px) {
+   .right {
+      padding-left: 0;
+      padding-right: 0;
    }
 }

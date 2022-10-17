@@ -1,6 +1,6 @@
 .wrap {
    position: fixed;
-   z-index: 99999999;
+   z-index: 999;
    left: 50%;
    top: 30%;
    transform: translate(-50%, -50%);
@@ -14,6 +14,12 @@
    border-left-color: transparent;
    border-radius: 50%;
    animation: spinner 1s infinite linear;
+}
+.absolute {
+   position: absolute !important;
+   left: 50%;
+   top: 30%;
+   transform: translate(-50%, -50%);
 }
 @keyframes spinner {
    0% {

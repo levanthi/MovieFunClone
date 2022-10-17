@@ -16,6 +16,7 @@ import styles from './videoControls.module.scss';
 import { images } from '../../assets/images';
 import clientSlice from '../../redux/clientSlice';
 import { getSub } from '../../redux/selector';
+import Loading from '../Loading';
 
 const cx = className.bind(styles);
 
@@ -78,10 +79,18 @@ function VideoControls({ src = '', vtt = '' }) {
    );
    const [speed, setSpeed] = useState(1);
    useEffect(() => {
-      videoRef.current.addEventListener('loadeddata', () => {
+      const callback = () => {
          setLoaded(true);
-      });
+      };
+      videoRef.current?.addEventListener('loadeddata', callback);
    }, []);
+   useEffect(() => {
+      setLoaded(false);
+      if (processRef.current) {
+         processRef.current.lastChild.style.width = '0';
+         setPlaying(false);
+      }
+   }, [src]);
    const togglePlay = () => {
       if (videoRef.current) {
          if (playing) {
@@ -223,8 +232,8 @@ function VideoControls({ src = '', vtt = '' }) {
          >
             <track src={vtt[sub]} kind="subtitles" srcLang={sub} default />
          </video>
-         {!playing && <Play onClick={togglePlay} />}
-         {isVideoLoaded && (
+         {!playing && isVideoLoaded && <Play onClick={togglePlay} />}
+         {isVideoLoaded ? (
             <div ref={controlsRef} className={cx('controls-wrap')}>
                <div
                   ref={processRef}
@@ -272,7 +281,7 @@ function VideoControls({ src = '', vtt = '' }) {
                      <div className={cx('timer')}>
                         <div ref={currentTimeRef}>00:00</div>
                         <span>/</span>
-                        <div>{convertTimer(videoRef.current.duration)}</div>
+                        <div>{convertTimer(videoRef.current?.duration)}</div>
                      </div>
                   </div>
                   <div className={cx('right')}>
@@ -294,26 +303,28 @@ function VideoControls({ src = '', vtt = '' }) {
                            })}
                         </div>
                      </div>
-                     <div className={cx('subtitle')}>
-                        <FontAwesomeIcon icon={faClosedCaptioning} />
-                        <div>
-                           {subtitleLanguages.map((language) => {
-                              return (
-                                 <div
-                                    key={language.name}
-                                    onClick={(e) => {
-                                       handleSubtitle(e, language);
-                                    }}
-                                    className={cx({
-                                       active: language.key === sub,
-                                    })}
-                                 >
-                                    {language.name}
-                                 </div>
-                              );
-                           })}
+                     {!!vtt && (
+                        <div className={cx('subtitle')}>
+                           <FontAwesomeIcon icon={faClosedCaptioning} />
+                           <div>
+                              {subtitleLanguages.map((language) => {
+                                 return (
+                                    <div
+                                       key={language.name}
+                                       onClick={(e) => {
+                                          handleSubtitle(e, language);
+                                       }}
+                                       className={cx({
+                                          active: language.key === sub,
+                                       })}
+                                    >
+                                       {language.name}
+                                    </div>
+                                 );
+                              })}
+                           </div>
                         </div>
-                     </div>
+                     )}
                      <img
                         onClick={handlePicInPic}
                         src={images.picture}
@@ -326,6 +337,8 @@ function VideoControls({ src = '', vtt = '' }) {
                   </div>
                </div>
             </div>
+         ) : (
+            <Loading absolute />
          )}
       </div>
    );

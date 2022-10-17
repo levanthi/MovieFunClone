@@ -3,9 +3,9 @@ import styles from './loading.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Loading() {
+function Loading({ absolute }) {
    return (
-      <div className={cx('wrap')}>
+      <div className={cx('wrap', { absolute })}>
          <div className={cx('loading')}></div>
       </div>
    );

@@ -5,6 +5,7 @@
    justify-content: center;
    video {
       width: 100%;
+      position: relative;
    }
 }
 video::-webkit-media-controls {
