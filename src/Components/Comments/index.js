@@ -14,6 +14,7 @@ import userSlice from '../../redux/userSlice';
 import clientSlice from '../../redux/clientSlice';
 import { refreshToken } from '../../redux/API/authApi';
 import Button from '../Button';
+import { BACKEND_URL } from '~/variables';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +29,7 @@ function Comments({ movieId }) {
 
    const user = useSelector(getUser);
 
-   const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
+   const axiosJWT = axios.create({ baseURL: BACKEND_URL });
    axiosJWT.interceptors.request.use(
       async (config) => {
          let date = new Date();
@@ -142,7 +143,7 @@ function Comments({ movieId }) {
       //connect to socketIO
       if (movieId) {
          //Connect to socketIO
-         socketRef.current = socketIOClient.connect('http://localhost:8080');
+         socketRef.current = socketIOClient.connect(BACKEND_URL);
          //Subscribe room
          socketRef.current.emit('subscribe', movieId);
          //Receive data from socket server

@@ -12,6 +12,7 @@ import Button from '~/Components/Button';
 import clientSlice from '~/redux/clientSlice';
 import userSlice from '~/redux/userSlice';
 import { refreshToken } from '~/redux/API/authApi';
+import { BACKEND_URL } from '~/variables';
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +26,7 @@ function Profile() {
    const [retypeNewPassword, setRetypeNewPassword] = useState('');
    const [password, setPassword] = useState('');
 
-   const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
+   const axiosJWT = axios.create({ baseURL: BACKEND_URL });
    axiosJWT.interceptors.request.use(
       async (config) => {
          let date = new Date();

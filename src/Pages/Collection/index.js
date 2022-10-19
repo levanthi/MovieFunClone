@@ -9,6 +9,7 @@ import { refreshToken } from '~/redux/API/authApi';
 import { getUser } from '~/redux/selector';
 import userSlice from '~/redux/userSlice';
 import clientSlice from '~/redux/clientSlice';
+import { BACKEND_URL } from '~/variables';
 
 function Collection() {
    const location = useLocation();
@@ -23,7 +24,7 @@ function Collection() {
 
    const user = useSelector(getUser);
 
-   const axiosJWT = axios.create({ baseURL: 'http://localhost:8080' });
+   const axiosJWT = axios.create({ baseURL: BACKEND_URL });
    axiosJWT.interceptors.request.use(
       async (config) => {
          let date = new Date();

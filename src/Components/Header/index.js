@@ -24,6 +24,7 @@ import styles from './header.module.scss';
 import Button from '../Button';
 import { images } from '../../assets/images';
 import { refreshToken } from '../../redux/API/authApi';
+import { BACKEND_URL } from '~/variables';
 
 const cx = classNames.bind(styles);
 
@@ -75,7 +76,7 @@ function Header() {
    ];
 
    const axiosJWT = axios.create({
-      baseURL: 'http://localhost:8080',
+      baseURL: BACKEND_URL,
    });
    axiosJWT.interceptors.request.use(
       async (config) => {
@@ -97,7 +98,7 @@ function Header() {
 
    function handleLogout() {
       axios
-         .get('http://localhost:8080/auth/logout', {
+         .get(`${BACKEND_URL}/auth/logout`, {
             withCredentials: true,
          })
          .then((res) => {

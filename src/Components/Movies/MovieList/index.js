@@ -7,16 +7,17 @@ const cx = classNames.bind(styles);
 function MovieList({ movieList = [], list, className }) {
    return (
       <div className={cx('movie-list', 'row')}>
-         {movieList.map((movie, index) => {
-            return (
-               <MovieItem
-                  className={className}
-                  key={index}
-                  data={movie}
-                  list={list}
-               />
-            );
-         })}
+         {Array.isArray(movieList) &&
+            movieList.map((movie, index) => {
+               return (
+                  <MovieItem
+                     className={className}
+                     key={index}
+                     data={movie}
+                     list={list}
+                  />
+               );
+            })}
       </div>
    );
 }

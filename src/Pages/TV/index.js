@@ -20,6 +20,7 @@ import { getUser } from '~/redux/selector';
 import userSlice from '~/redux/userSlice';
 import { refreshToken } from '~/redux/API/authApi';
 import clientSlice from '~/redux/clientSlice';
+import { BACKEND_URL } from '~/variables';
 
 const cx = classNames.bind(styles);
 
@@ -30,7 +31,7 @@ function TV() {
    const [data, setData] = useState({});
 
    const axiosJWT = axios.create({
-      baseURL: 'http://localhost:8080',
+      baseURL: BACKEND_URL,
    });
 
    axiosJWT.interceptors.request.use(
