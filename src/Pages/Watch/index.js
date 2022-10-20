@@ -10,7 +10,6 @@ import VideoControls from '~/Components/VideoControls';
 import Axios from '~/Components/Axios';
 import { getUser } from '~/redux/selector';
 import Comments from '~/Components/Comments';
-import { current } from '@reduxjs/toolkit';
 
 const cx = classNames.bind(styles);
 
