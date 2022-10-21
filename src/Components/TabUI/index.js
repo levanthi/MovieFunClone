@@ -9,7 +9,12 @@ function TabUI({ tabData = [], tabActive, setTabActive }) {
    const slideBarRef = useRef();
 
    useEffect(() => {
-      slideBarRef.current.style.left = 160 * tabActive + 'px';
+      try {
+         const sidebarWidth = +slideBarRef.current.offsetWidth;
+         slideBarRef.current.style.left = sidebarWidth * tabActive + 'px';
+      } catch (err) {
+         console.log(err);
+      }
    }, [tabActive]);
 
    const handleActiveChange = (index) => {

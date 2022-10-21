@@ -257,6 +257,13 @@ function TV() {
                               slidesToScroll: 3,
                            },
                         },
+                        {
+                           breakpoint: 400,
+                           settings: {
+                              slidesToShow: 2,
+                              slidesToScroll: 2,
+                           },
+                        },
                      ]}
                   />
                )}

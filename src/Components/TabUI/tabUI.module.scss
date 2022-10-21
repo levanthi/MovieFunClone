@@ -42,3 +42,19 @@
       color: #3f51b5;
    }
 }
+
+@media (max-width: 800px) {
+   .tab-ui {
+      margin: 0;
+      width: 100%;
+      .slide-bar {
+         width: 33.33333333%;
+      }
+   }
+   .tab-item {
+      flex: 1;
+      button {
+         width: 100%;
+      }
+   }
+}

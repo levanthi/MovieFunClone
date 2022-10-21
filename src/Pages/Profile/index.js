@@ -49,7 +49,6 @@ function Profile() {
       setChangePassword((pre) => !pre);
    };
    const handleSubmit = () => {
-      console.log('submit');
       if (newPassword !== retypeNewPassword) {
          dispatch(
             clientSlice.actions.addToastMessage({

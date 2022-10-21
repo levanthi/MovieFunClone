@@ -84,7 +84,6 @@ function Comments({ movieId }) {
             },
          })
          .then((res) => {
-            console.log(res.data);
             setComments((pre) => {
                return [...pre, ...res.data.data];
             });
