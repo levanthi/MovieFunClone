@@ -97,9 +97,20 @@ function Header() {
    );
 
    function handleLogout() {
+      let refToken = document.cookie.split(';').reduce((res, c) => {
+         const [key, val] = c.trim().split('=').map(decodeURIComponent);
+         try {
+            return Object.assign(res, { [key]: JSON.parse(val) });
+         } catch (e) {
+            return Object.assign(res, { [key]: val });
+         }
+      }, {});
       axios
          .get(`${BACKEND_URL}/auth/logout`, {
             withCredentials: true,
+            params: {
+               refreshToken: refToken.refreshToken,
+            },
          })
          .then((res) => {
             if (res.status === 200) {

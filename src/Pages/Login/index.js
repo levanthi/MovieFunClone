@@ -82,7 +82,7 @@ function Login() {
             })
             .then((res) => {
                const { user, refreshToken } = res.data;
-               document.cookie = `refreshToken=Bearer ${refreshToken}`;
+               document.cookie = `refreshToken=Bearer ${refreshToken};path=/`;
                dispatch(userSlice.actions.setUser(user));
                navigate('/');
             })

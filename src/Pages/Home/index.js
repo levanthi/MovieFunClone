@@ -15,7 +15,6 @@ function Home() {
    const [nominated, setNominated] = useState([]);
    const [show, setShow] = useState([]);
    const [movie, setMovie] = useState([]);
-
    useEffect(() => {
       dispatch(clientSlice.actions.startLoading());
       const nominated = axios.get('/movie/nominated').then((res) => {
