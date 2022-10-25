@@ -48,7 +48,21 @@ function Login() {
       ],
       submit: { name: 'Đăng nhập' },
       tick: { name: 'Ghi nhớ' },
-      otherMethods: [{ method: 'google', name: 'Đăng nhập với Google' }],
+      otherMethods: [
+         {
+            method: 'google',
+            name: 'Đăng nhập với Google',
+            onClick: () => {
+               dispatch(
+                  clientSlice.actions.addToastMessage({
+                     type: 'warning',
+                     message: 'Coming soon!',
+                     id: uuid(),
+                  }),
+               );
+            },
+         },
+      ],
       otherFeatures: [
          { name: 'Đăng ký', to: '/signup' },
          { name: 'Quên mật khẩu', to: '/forgot' },

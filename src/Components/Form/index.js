@@ -55,7 +55,7 @@ function Form({ data, handleSubmit }) {
             {data.otherMethods?.map((method) => {
                return (
                   <div key={method.method} className={cx('field')}>
-                     <Button large primary>
+                     <Button onClick={method.onClick} large primary>
                         {method.method === 'google' ? (
                            <img
                               src={images.Google}
