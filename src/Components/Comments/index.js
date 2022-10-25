@@ -37,7 +37,6 @@ function Comments({ movieId }) {
          if (decode.exp < date.getTime() / 1000) {
             const data = await refreshToken();
             const refreshUser = { ...user, accessToken: data.accessToken };
-            document.cookie = `token=Bearer ${data.refreshToken}`;
             dispatch(userSlice.actions.setUser(refreshUser));
             config.headers = { authorization: `Bearer ${data.accessToken}` };
          }

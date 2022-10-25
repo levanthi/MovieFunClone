@@ -81,7 +81,8 @@ function Login() {
                withCredentials: 'include',
             })
             .then((res) => {
-               const { user } = res.data;
+               const { user, refreshToken } = res.data;
+               document.cookie = `refreshToken=Bearer ${refreshToken}`;
                dispatch(userSlice.actions.setUser(user));
                navigate('/');
             })
